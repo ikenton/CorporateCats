@@ -5,23 +5,36 @@ using UnityEngine.UI;
 
 public class MovingBar : MonoBehaviour
 {
-    public Image greenArea;
-    public Image slider;
-    public Image qteBar;
-    public static float widthOfBar = 300f;
-    public float speed = 200;
+    public bool enter = false;
 
-   
+    public void Update()
+    {
+        Hit();
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("enter");
+        
     }
     private void OnTriggerStay2D(Collider2D other)
     {
-        Debug.Log("stay");
+       // Debug.Log("stay");
+      
+        enter = true;
+        
+       // Debug.Log(enter);
     }
     private void OnTriggerExit2D(Collider2D other)
     {
-        Debug.Log("exit");
+        enter = false;
+        //Debug.Log("exit");
+        //Debug.Log(enter);
+    }
+
+    public void Hit()
+    {
+        if (enter && Input.GetButtonDown("Jump")){
+            Debug.Log("HIT");
+        }
     }
 }
