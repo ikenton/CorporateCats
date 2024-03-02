@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class MovingBar : MonoBehaviour
 {
-    public bool enter = false;
-
+    public static bool enter = false;
+    public GameObject cat;
+    public GameObject mouse;
     public void Update()
     {
         Hit();
@@ -33,8 +33,15 @@ public class MovingBar : MonoBehaviour
 
     public void Hit()
     {
+        //Vector3 mousePosition = GameObject.Find("mouse").transform.position;
+        
         if (enter && Input.GetButtonDown("Jump")){
-            Debug.Log("HIT");
+           Debug.Log("HIT");
+
+        }else if(!enter && Input.GetButtonDown("Jump"))
+        {
+            Debug.Log("Missed");
+            //reset game
         }
     }
 }

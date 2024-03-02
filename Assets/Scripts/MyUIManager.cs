@@ -12,12 +12,15 @@ public class MySlider : MonoBehaviour
     public Image slider;
     public Image qteBar;
     public TextMeshProUGUI level;
+    public TextMeshProUGUI numOfMice;
     public RectTransform rt;
     public static float widthOfBar = 410f;
     public bool entered = false;
     public int levelNum = 1;
     public float speed = 200;
     public float greenWidth;
+    public bool hit = false;
+    public int miceCount = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -25,13 +28,15 @@ public class MySlider : MonoBehaviour
         OffsetGreenArea();
         ChangeDifficulty();
         UpdateLevelText("Level ");
+        UpdateMiceCountText("Mice Killed: ");
     }
 
     // Update is called once per frame
     void Update()
     {
-        slider.transform.position = new Vector3(Mathf.PingPong(Time.time * speed, widthOfBar) +235f, 87f, transform.position.z);
+        UpdateMiceCountText("Mice Killed: ");
 
+        MoveBar();
     }
 
     void OffsetGreenArea()
@@ -63,5 +68,32 @@ public class MySlider : MonoBehaviour
     public void UpdateLevelText(string text)
     {
         level.text = "Level " + levelNum;
+    }
+    public void UpdateMiceCountText(string text)
+    {
+        numOfMice.text = "Mice killed: " + miceCount;
+    }
+    void MoveBar()
+    {
+        if (!hit)
+        {
+            slider.transform.position = new Vector3(Mathf.PingPong(Time.time * speed, widthOfBar) + 235f, 87f, transform.position.z);
+            if (MovingBar.enter && Input.GetButtonDown("Jump"))
+            {
+                miceCount++;
+                hit = true;
+                
+                CatPounce catPounce = FindObjectOfType<CatPounce>();
+                if (catPounce != null)
+                {
+                    catPounce.MoveCatToMouse();
+                }
+            }
+        }
+        else
+        {
+            //reset game
+        }
+        
     }
 }
