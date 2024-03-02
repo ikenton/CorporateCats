@@ -14,18 +14,16 @@ public class MySlider : MonoBehaviour
     public TextMeshProUGUI level;
     public RectTransform rt;
     public static float widthOfBar = 410f;
-    public float xPosition; /*this will be used when the length of 
-                             * the qte bar is changed. It is also a
-                             * temp val rn so the slider appropriately lines up*/
-    public float yPosition;
     public bool entered = false;
     public int levelNum = 1;
     public float speed = 200;
+    public float greenWidth;
 
     // Start is called before the first frame update
     void Start()
     {
         OffsetGreenArea();
+        ChangeDifficulty();
     }
 
     // Update is called once per frame
@@ -44,5 +42,20 @@ public class MySlider : MonoBehaviour
         currentPosition.x += offsetx;
         rt.anchoredPosition = currentPosition;
 
+    }
+
+    void ChangeDifficulty()
+    {
+        rt = greenArea.GetComponent<RectTransform>();
+        greenWidth = rt.rect.size.x;
+
+        if(levelNum > 1)
+        {
+            speed = levelNum*100 +50;
+            Vector2 sizeDelta = rt.sizeDelta;
+            float newWidth = greenWidth /levelNum ;
+            sizeDelta.x = newWidth;
+            rt.sizeDelta = sizeDelta;
+        }
     }
 }

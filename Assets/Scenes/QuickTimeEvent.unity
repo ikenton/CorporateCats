@@ -820,7 +820,6 @@ GameObject:
   - component: {fileID: 1631170801}
   - component: {fileID: 1631170800}
   - component: {fileID: 1631170799}
-  - component: {fileID: 1631170803}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -912,28 +911,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1631170803
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1631170798}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 930fdc4e416f9284996d1be726268ac8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  greenArea: {fileID: 576881909}
-  slider: {fileID: 199162598}
-  qteBar: {fileID: 1052312873}
-  level: {fileID: 0}
-  rt: {fileID: 0}
-  xPosition: 0
-  yPosition: 0
-  entered: 0
-  levelNum: 1
-  speed: 200
 --- !u!1 &2058152608
 GameObject:
   m_ObjectHideFlags: 0
@@ -983,11 +960,10 @@ MonoBehaviour:
   qteBar: {fileID: 1052312873}
   level: {fileID: 1143260493}
   rt: {fileID: 1052312872}
-  xPosition: 0
-  yPosition: 0
   entered: 0
   levelNum: 1
   speed: 200
+  greenWidth: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
