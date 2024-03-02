@@ -24,6 +24,7 @@ public class MySlider : MonoBehaviour
     {
         OffsetGreenArea();
         ChangeDifficulty();
+        UpdateLevelText("Level ");
     }
 
     // Update is called once per frame
@@ -44,7 +45,7 @@ public class MySlider : MonoBehaviour
 
     }
 
-    void ChangeDifficulty()
+    public void ChangeDifficulty()
     {
         rt = greenArea.GetComponent<RectTransform>();
         greenWidth = rt.rect.size.x;
@@ -57,5 +58,10 @@ public class MySlider : MonoBehaviour
             sizeDelta.x = newWidth;
             rt.sizeDelta = sizeDelta;
         }
+    }
+
+    public void UpdateLevelText(string text)
+    {
+        level.text = "Level " + levelNum;
     }
 }
