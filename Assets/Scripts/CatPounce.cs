@@ -4,19 +4,18 @@ using UnityEngine;
 
 public class CatPounce : MonoBehaviour
 {
-    public Transform mouseTransform; 
-    public float speed = 20f;
-    
-    public void MoveCatToMouse()
+    public Transform mouseTransform;
+    public float speed = 100f;
+    public static bool pounced = false;
+
+    private void OnTriggerStay2D(Collider2D other)
     {
-        if (mouseTransform != null)
-        {
-            //have it slide into position
-            transform.position = mouseTransform.position;
-        }
-        else
-        {
-            Debug.LogError("Mouse Transform reference is not set!");
-        }
+        //pounced = true;
+    }
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        //pounced = false;
+        //Debug.Log("exit");
+        
     }
 }
