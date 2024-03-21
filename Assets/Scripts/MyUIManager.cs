@@ -25,6 +25,7 @@ public class MySlider : MonoBehaviour
     public Button back;
     public Button playAgain;
     public TextMeshProUGUI levelUpTextNum;
+    public GameObject completedPopUp;
     public static float widthOfBar = 410f;
     public int levelNum = 1;
     public float speed = 200;
@@ -42,7 +43,9 @@ public class MySlider : MonoBehaviour
         OffsetGreenArea();
         UpdateLevelText("Level ");
         UpdateMiceCountText("Mice Killed: ");
+        ChangeDifficulty();
         levelPopUp.SetActive(false);
+        completedPopUp.SetActive(false);
     }
 
     // Update is called once per frame
@@ -121,6 +124,7 @@ public class MySlider : MonoBehaviour
     }
     public void MoveCat()
     {
+        //TODO: make the cat move in the y direction so that it looks like its actually jumping and not just sliding
         if (hit && cat.transform.position.x != 2.75f)
         {
             cat.transform.Translate(Vector3.right * 10f * Time.deltaTime);
@@ -165,8 +169,6 @@ public class MySlider : MonoBehaviour
         {
             //Debug.Log("ON IT");
             ResetLevel(miceCount, levelNum);
-
-
         }
     }
 
@@ -192,11 +194,17 @@ public class MySlider : MonoBehaviour
         back.onClick.AddListener(GoToMainMenu); //goes back to the selection area
         playAgain.onClick.AddListener(Reload);
     }
+    public void CompletedPounce()
+    {
+        Time.timeScale = 0f;
+        hitText.gameObject.SetActive(false);
+        completedPopUp.SetActive(true);    
+        back.onClick.AddListener(GoToMainMenu); //goes back to the selection area
+    }
     void GoToMainMenu()
     {
         Debug.Log("Go to main menu");
         levelPopUp.SetActive(false);
-        //StartCoroutine(ResetLevel());
     }
     void Reload()
     {
@@ -206,10 +214,16 @@ public class MySlider : MonoBehaviour
     }
     void ResetLevel(int miceKilled, int levelNum) //called after a mouse is killed
     {
+        //BriefPause(1f); //will pause for input amount of seconds then restart level
+
         hit = false;
-        if (miceKilled >= 3) 
+        if (miceKilled >= 3 && levelNum < 5) 
         {
             LevelUp(levelNum);
+        }
+        else if(miceKilled >= 3 && levelNum == 5)
+        {
+            CompletedPounce();
         }
         else
         {
@@ -220,6 +234,22 @@ public class MySlider : MonoBehaviour
             OffsetGreenArea(); //change the greenarea
             ChangeDifficulty();//change the difficulty if necessary
         }
-
+        
     }
+    public void BriefPause(float seconds)
+    {
+        StartCoroutine(BriefPauseCor(seconds));
+    }
+    public IEnumerator BriefPauseCor(float seconds)
+    {
+        Time.timeScale = 0f;
+        float pauseEndTime = Time.realtimeSinceStartup + seconds;
+        while (Time.realtimeSinceStartup < pauseEndTime)
+        {
+            yield return 0;
+        }
+        Time.timeScale = 1f;
+        
+    }
+
 }
