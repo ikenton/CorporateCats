@@ -31,15 +31,20 @@ public class MySlider : MonoBehaviour
     public float speed = 200;
     public bool hit = false;
     public int miceCount = 0;
-    /*float timeElapsed;
-    float lerpDuration = 3;
-
-    float startValue = 0;
-    float endValue = 10;
-    float valueToLerp;*/
+    public bool visible = false;
+    public float moveDuration = 3f;
+    public Vector3 startPosition;
+    public Vector3 endPosition;
+    private Vector3 currentPosition;
+    public Vector3 temp;
     // Start is called before the first frame update
     void Start()
     {
+        StartCoroutine(MoveCor());
+
+        startPosition = new Vector3(-202.4f, slider.rectTransform.localPosition.y, slider.rectTransform.localPosition.z);
+        endPosition = new Vector3(startPosition.x+404.8f, startPosition.y, 0f);
+        //ManageBar();
         OffsetGreenArea();
         UpdateLevelText("Level ");
         UpdateMiceCountText("Mice Killed: ");
@@ -57,13 +62,7 @@ public class MySlider : MonoBehaviour
         {
             MoveCat();
         }
-        MoveBar();
-        /*if (timeElapsed < lerpDuration)
-        {
-            valueToLerp = Mathf.Lerp(startValue, endValue, timeElapsed / lerpDuration);
-            slider.transform.position = new Vector3(valueToLerp,slider.transform.position.y, slider.transform.position.z);
-            timeElapsed += Time.deltaTime;
-        }*/
+        ManageBar();
     }
 
     void OffsetGreenArea()
@@ -125,7 +124,7 @@ public class MySlider : MonoBehaviour
     public void MoveCat()
     {
         //TODO: make the cat move in the y direction so that it looks like its actually jumping and not just sliding
-        if (hit && cat.transform.position.x != 2.75f)
+        if (hit && cat.transform.position.x != mouse.transform.position.x)
         {
             cat.transform.Translate(Vector3.right * 10f * Time.deltaTime);
             
@@ -138,18 +137,18 @@ public class MySlider : MonoBehaviour
         }
 
     }
-    void MoveBar()
+    void ManageBar()
     {
         if (!hit)
         {
-            slider.transform.position = new Vector3(Mathf.PingPong(Time.time * speed, widthOfBar)+160f, 87f, transform.position.z);
-            //might wanna try lerp give it 2 points and then percentages?
-            
+           
+
             if (MovingBar.enter && Input.GetButtonDown("Jump"))
             {
                 //if hit
+                Debug.Log("HIT");
                 hit = true;
-                StartCoroutine(DisplayHitText("HIT!"));
+                DisplayHitText("HIT!");
                 MoveCat();
                
                 miceCount++;
@@ -159,11 +158,9 @@ public class MySlider : MonoBehaviour
             }
             else if(!MovingBar.enter && Input.GetButtonDown("Jump"))
             {
-                StartCoroutine(DisplayHitText("MISSED"));
+                DisplayHitText("MISSED");
             }
             
-
-
         }
         if (cat.transform.position.x == 2.75f && hit)
         {
@@ -171,16 +168,52 @@ public class MySlider : MonoBehaviour
             ResetLevel(miceCount, levelNum);
         }
     }
+    
+    IEnumerator MoveCor()
+    {
+        float progress = 0;
+        currentPosition = startPosition;
+        while (progress < 1)
+        {
+            progress += Time.deltaTime / moveDuration;
+            if (!hit)
+            {
+                currentPosition = Vector3.Lerp(startPosition, endPosition, progress);
+                slider.rectTransform.localPosition = currentPosition;
+            }
+            
 
+            yield return null;
+        }
 
-    IEnumerator DisplayHitText(string hit)
+        currentPosition = endPosition;
+        if(currentPosition == endPosition)
+        {
+            
+            temp = startPosition; 
+            startPosition = endPosition;
+            endPosition = temp;
+            StartCoroutine(MoveCor());
+            //Move();//recursively calls it so it will move back and forth
+        }
+    }
+
+    IEnumerator DisplayHitTextCor(string hit)
     {
         hitText.text = hit;
         hitText.gameObject.SetActive(true);
         yield return new WaitForSeconds(1f);
         hitText.gameObject.SetActive(false);
         yield return new WaitForSeconds(1f);
-        
+        visible = true;
+
+
+    }
+    public void DisplayHitText(string hit)
+    {
+        hitText.text = hit;
+        StartCoroutine(DisplayHitTextCor(hit));
+        //hitText.gameObject.SetActive(true);
     }
     void LevelUp(int  level)
     {
@@ -214,10 +247,12 @@ public class MySlider : MonoBehaviour
     }
     void ResetLevel(int miceKilled, int levelNum) //called after a mouse is killed
     {
-        //BriefPause(1f); //will pause for input amount of seconds then restart level
-
+        //BriefPause(0.5f);
+        //hitText.gameObject.SetActive(false);
+        //BriefPause(1f);
         hit = false;
-        if (miceKilled >= 3 && levelNum < 5) 
+        
+        if (miceKilled >= 3 && levelNum < 5)
         {
             LevelUp(levelNum);
         }
@@ -230,15 +265,16 @@ public class MySlider : MonoBehaviour
             Debug.Log("resetting");
             cat.transform.position = new Vector3(-3.9f, cat.transform.position.y, cat.transform.position.z);
             CatPounce.pounced = false;
-            MoveBar();//reset the sliding bar
+            ManageBar();//reset the sliding bar
             OffsetGreenArea(); //change the greenarea
             ChangeDifficulty();//change the difficulty if necessary
         }
-        
+      
     }
     public void BriefPause(float seconds)
     {
         StartCoroutine(BriefPauseCor(seconds));
+        //return true;
     }
     public IEnumerator BriefPauseCor(float seconds)
     {

@@ -160,7 +160,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -202.4, y: 42.859}
+  m_AnchoredPosition: {x: -202.4, y: 43}
   m_SizeDelta: {x: 24.8463, y: 86}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &199162598
@@ -3006,10 +3006,15 @@ MonoBehaviour:
   playAgain: {fileID: 1307644978}
   levelUpTextNum: {fileID: 2072031960}
   completedPopUp: {fileID: 1785987602}
-  levelNum: 4
+  levelNum: 1
   speed: 200
   hit: 0
   miceCount: 0
+  visible: 0
+  moveDuration: 3
+  startPosition: {x: 0, y: 0, z: 0}
+  endPosition: {x: 0, y: 0, z: 0}
+  temp: {x: 0, y: 0, z: 0}
 --- !u!1 &2072031958
 GameObject:
   m_ObjectHideFlags: 0

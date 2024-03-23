@@ -15,11 +15,11 @@ public class MovingBar : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D other)
     {
-       // Debug.Log("stay");
+        //Debug.Log("stay");
       
         enter = true;
         
-       // Debug.Log(enter);
+        //Debug.Log(enter);
     }
     private void OnTriggerExit2D(Collider2D other)
     {
