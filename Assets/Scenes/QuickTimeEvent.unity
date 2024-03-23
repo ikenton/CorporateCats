@@ -3007,7 +3007,7 @@ MonoBehaviour:
   levelUpTextNum: {fileID: 2072031960}
   completedPopUp: {fileID: 1785987602}
   levelNum: 1
-  speed: 200
+  speed: 0.5
   hit: 0
   miceCount: 0
   visible: 0

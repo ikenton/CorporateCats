@@ -28,7 +28,7 @@ public class MySlider : MonoBehaviour
     public GameObject completedPopUp;
     public static float widthOfBar = 410f;
     public int levelNum = 1;
-    public float speed = 200;
+    public float speed = 0.5f;
     public bool hit = false;
     public int miceCount = 0;
     public bool visible = false;
@@ -44,7 +44,6 @@ public class MySlider : MonoBehaviour
 
         startPosition = new Vector3(-202.4f, slider.rectTransform.localPosition.y, slider.rectTransform.localPosition.z);
         endPosition = new Vector3(startPosition.x+404.8f, startPosition.y, 0f);
-        //ManageBar();
         OffsetGreenArea();
         UpdateLevelText("Level ");
         UpdateMiceCountText("Mice Killed: ");
@@ -86,27 +85,27 @@ public class MySlider : MonoBehaviour
             case 1:
                 rt.sizeDelta = new Vector2(142f, 86f);
                 greenBoxCollider.size = new Vector2(142f, 86f);
-                speed = 200;
+                speed = 0.5f;
                 break;
             case 2:
                 rt.sizeDelta = new Vector2(100f, 86f);
                 greenBoxCollider.size = new Vector2(100f, 86f);
-                speed = levelNum * 100 + 50;
+                speed = 0.7f;
                 break;
             case 3:
                 rt.sizeDelta = new Vector2(80f, 86f);
                 greenBoxCollider.size = new Vector2(80f, 86f);
-                speed = levelNum * 100 + 50;
+                speed =  0.9f;
                 break;
             case 4:
                 rt.sizeDelta = new Vector2(50f, 86f);
                 greenBoxCollider.size = new Vector2(50f, 86f);
-                speed = levelNum * 100 + 50;
+                speed = 1f;
                 break;
             case 5:
                 rt.sizeDelta = new Vector2(25f, 86f);
                 greenBoxCollider.size = new Vector2(25f, 86f);
-                speed = levelNum * 100 + 50;
+                speed = 1.5f;
 
                 break;
         }
@@ -141,8 +140,6 @@ public class MySlider : MonoBehaviour
     {
         if (!hit)
         {
-           
-
             if (MovingBar.enter && Input.GetButtonDown("Jump"))
             {
                 //if hit
@@ -154,7 +151,6 @@ public class MySlider : MonoBehaviour
                 miceCount++;
                 UpdateMiceCountText("Mice Killed: ");
                 
-                
             }
             else if(!MovingBar.enter && Input.GetButtonDown("Jump"))
             {
@@ -162,7 +158,7 @@ public class MySlider : MonoBehaviour
             }
             
         }
-        if (cat.transform.position.x == 2.75f && hit)
+        if (cat.transform.position.x == mouse.transform.position.x && hit)
         {
             //Debug.Log("ON IT");
             ResetLevel(miceCount, levelNum);
@@ -175,7 +171,7 @@ public class MySlider : MonoBehaviour
         currentPosition = startPosition;
         while (progress < 1)
         {
-            progress += Time.deltaTime / moveDuration;
+            progress += Time.deltaTime * speed;
             if (!hit)
             {
                 currentPosition = Vector3.Lerp(startPosition, endPosition, progress);
@@ -218,7 +214,6 @@ public class MySlider : MonoBehaviour
     void LevelUp(int  level)
     {
         miceCount = 0;
-        //yield return new WaitForSeconds(0.65f); //this is the time it takes for the cat to move to the mouse
         Time.timeScale = 0f; //pauses the game
         hitText.gameObject.SetActive(false);
         levelPopUp.SetActive(true);
