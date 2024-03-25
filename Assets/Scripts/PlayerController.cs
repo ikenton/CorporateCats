@@ -15,15 +15,15 @@ public class PlayerController : PhysicsObject
     {
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            desiredx = -3;
+            desiredx = -3f;
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
-            desiredx = 3;
+            desiredx = 3f;
         }
         else
         {
-            desiredx = 0;
+            desiredx = 0f;
         }
     }
 }

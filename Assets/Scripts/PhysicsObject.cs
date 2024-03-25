@@ -17,9 +17,10 @@ public class PhysicsObject : MonoBehaviour
     {
         Vector3 acceleration = -9.81f * Vector3.up;
         velocity += acceleration * Time.fixedDeltaTime;
+        Vector2 movement = velocity * Time.fixedDeltaTime;
         velocity.x = desiredx;
-        Movement(new Vector2(velocity.x, 0) * Time.fixedDeltaTime, true);
-        Movement(new Vector2(0, velocity.y) * Time.fixedDeltaTime, false);
+        Movement(new Vector2(movement.x, 0), true);
+        Movement(new Vector2(0, movement.y), false);
     }
 
     void Movement (Vector2 move, bool movex)
@@ -43,7 +44,7 @@ public class PhysicsObject : MonoBehaviour
             }
         }
 
-        transform.position += (Vector3)(move);
+        transform.position += (Vector3)move;
     }
 
     public virtual void CollideWithHorizontal(Collider2D other)
