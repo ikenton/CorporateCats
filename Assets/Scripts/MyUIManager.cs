@@ -72,39 +72,9 @@ public class MySlider : MonoBehaviour
         greenBoxCollider = rt.GetComponent<BoxCollider2D>();
 
         rt.sizeDelta = new Vector2(142f, 86f);
-        //adjust green bar size
+        //adjust green bar size & size
         speed += 0.05f;
         
-
-        /*switch (levelNum)
-        {
-            case 1:
-                rt.sizeDelta = new Vector2(142f, 86f);
-                greenBoxCollider.size = new Vector2(142f, 86f);
-                speed = 0.5f;
-                break;
-            case 2:
-                rt.sizeDelta = new Vector2(100f, 86f);
-                greenBoxCollider.size = new Vector2(100f, 86f);
-                speed = 0.7f;
-                break;
-            case 3:
-                rt.sizeDelta = new Vector2(80f, 86f);
-                greenBoxCollider.size = new Vector2(80f, 86f);
-                speed =  0.9f;
-                break;
-            case 4:
-                rt.sizeDelta = new Vector2(50f, 86f);
-                greenBoxCollider.size = new Vector2(50f, 86f);
-                speed = 1f;
-                break;
-            case 5:
-                rt.sizeDelta = new Vector2(25f, 86f);
-                greenBoxCollider.size = new Vector2(25f, 86f);
-                speed = 1.5f;
-
-                break;
-        }*/
     }
     public void UpdateMiceCountText(string text)
     {
@@ -151,7 +121,7 @@ public class MySlider : MonoBehaviour
         if (cat.transform.position.x == mouse.transform.position.x && hit)
         {
             //Debug.Log("ON IT");
-            ResetLevel(miceCount);
+            ResetLevel();
         }
     }
     
@@ -224,12 +194,12 @@ public class MySlider : MonoBehaviour
     {
         Debug.Log("Go to main menu");
     }
-    void ResetLevel(int miceKilled) //called after a mouse is killed
+    void ResetLevel() //called after a mouse is killed
     {
-        //hitText.gameObject.SetActive(false);
-        
+        Time.timeScale = 0f;
+        startPosition = new Vector3(-202.4f, slider.rectTransform.localPosition.y, slider.rectTransform.localPosition.z);
+        endPosition = new Vector3(startPosition.x + 404.8f, startPosition.y, 0f);
         slider.transform.localPosition = startPosition;
-        //BriefPause(0.5f);
         Debug.Log("resetting");
         cat.transform.position = new Vector3(-3.9f, cat.transform.position.y, cat.transform.position.z);
         CatPounce.pounced = false;
@@ -237,24 +207,9 @@ public class MySlider : MonoBehaviour
         ManageBar();//reset the sliding bar
         OffsetGreenArea(); //change the greenarea
         ChangeDifficulty();//change the difficulty if necessary
-        
-      
-    }
-    public void BriefPause(float seconds)
-    {
-        StartCoroutine(BriefPauseCor(seconds));
-        //return true;
-    }
-    public IEnumerator BriefPauseCor(float seconds)
-    {
-        Time.timeScale = 0f;
-        float pauseEndTime = Time.realtimeSinceStartup + seconds;
-        while (Time.realtimeSinceStartup < pauseEndTime)
-        {
-            yield return 0;
-        }
-        //Time.timeScale = 1f;
-        
+        Time.timeScale = 1f;
+
+
     }
 
 }
