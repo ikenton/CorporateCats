@@ -44,7 +44,6 @@ public class NPC : MonoBehaviour
             MeshRenderer meshRenderer = text.GetComponent<MeshRenderer>();
             meshRenderer.enabled = false;
             focused = false;
-            sceneName = "";
         }
     }
 }
