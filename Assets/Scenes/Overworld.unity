@@ -1170,6 +1170,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2183897497392934964, guid: f985a3ed0dd0e584e8e97bcd667ee7df, type: 3}
+      propertyPath: sceneName
+      value: ClimbEvent
+      objectReference: {fileID: 0}
+    - target: {fileID: 2469638852143473710, guid: f985a3ed0dd0e584e8e97bcd667ee7df, type: 3}
+      propertyPath: m_Text
+      value: Climbing
+      objectReference: {fileID: 0}
     - target: {fileID: 4773531937060691629, guid: f985a3ed0dd0e584e8e97bcd667ee7df, type: 3}
       propertyPath: m_Name
       value: NPC (1)

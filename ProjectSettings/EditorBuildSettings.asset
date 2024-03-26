@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/QuickTimeEvent.unity
     guid: 86cf7f6776ca30a4e81b7b0e3b059645
+  - enabled: 1
+    path: Assets/Scenes/ClimbEvent.unity
+    guid: c5f04be4ad261174a9fdf68b5d78e940
   m_configObjects: {}

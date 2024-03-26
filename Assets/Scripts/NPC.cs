@@ -23,9 +23,6 @@ public class NPC : MonoBehaviour
         if (focused && Input.GetKeyDown(KeyCode.Space) && sceneName != "")
         {
             SceneManager.LoadScene(sceneName);
-        } else
-        {
-            Debug.Log("Scene name not set");
         }
     }
 
@@ -46,6 +43,8 @@ public class NPC : MonoBehaviour
         {
             MeshRenderer meshRenderer = text.GetComponent<MeshRenderer>();
             meshRenderer.enabled = false;
+            focused = false;
+            sceneName = "";
         }
     }
 }
