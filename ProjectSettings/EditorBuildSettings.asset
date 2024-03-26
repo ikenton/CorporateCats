@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Overworld.unity
+    guid: e9b9aa5148701b3449864f81f8b9a88a
+  - enabled: 1
+    path: Assets/Scenes/QuickTimeEvent.unity
+    guid: 86cf7f6776ca30a4e81b7b0e3b059645
   m_configObjects: {}

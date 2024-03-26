@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : PhysicsObject
-{
-    // Start is called before the first frame update
+{    // Start is called before the first frame update
     void Start()
     {
         
@@ -15,15 +14,25 @@ public class PlayerController : PhysicsObject
     {
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            desiredx = -3f;
+            GetComponent<SpriteRenderer>().flipX = true;
+            desiredx = -4f;
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
-            desiredx = 3f;
+            GetComponent<SpriteRenderer>().flipX = false;
+            desiredx = 4f;
         }
         else
         {
             desiredx = 0f;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("NPC"))
+        {
+            Debug.Log("Collided with NPC");
         }
     }
 }
