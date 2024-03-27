@@ -961,6 +961,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocity: {x: 0, y: 0, z: 0}
   desiredx: 0
+  animator: {fileID: 1880583150}
 --- !u!58 &1880583149
 CircleCollider2D:
   m_ObjectHideFlags: 0
