@@ -113,6 +113,8 @@ public class MySlider : MonoBehaviour
                
                 miceCount++;
                 UpdateMiceCountText("Mice Killed: ");
+
+                ChangeDifficulty(); // make game harder with every hit
                 
             }
             else if(!MovingBar.enter && Input.GetButtonDown("Jump"))
