@@ -14,9 +14,9 @@ public class MoveMouse : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        mouse.velocity += Vector2.left * travelVelocity * Time.deltaTime;
+        mouse.velocity += Vector2.left * travelVelocity * Time.fixedDeltaTime;
         if (transform.position.x < deadZone){
             Destroy(gameObject);
         }
