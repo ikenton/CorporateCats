@@ -1477,6 +1477,7 @@ GameObject:
   - component: {fileID: 1182321626}
   - component: {fileID: 1182321625}
   - component: {fileID: 1182321627}
+  - component: {fileID: 1182321628}
   m_Layer: 0
   m_Name: Cat
   m_TagString: Untagged
@@ -1525,7 +1526,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e37f3aab6437e0841bbaedaf3fbeabd0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2d421816161ff864486e24e56d8ecefc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1545,8 +1546,8 @@ Transform:
   m_GameObject: {fileID: 1182321622}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.9039, y: -0.5086, z: 0}
-  m_LocalScale: {x: 0.3127829, y: 0.29937482, z: 1}
+  m_LocalPosition: {x: -3.90625, y: -0.3125, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1614,14 +1615,14 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.49, y: 5.38}
+    oldSize: {x: 2, y: 2}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5.49, y: 5.38}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &1182321627
 MonoBehaviour:
@@ -1637,6 +1638,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseTransform: {fileID: 1316643386}
   speed: 2
+--- !u!95 &1182321628
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182321622}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 72067ac830e39d14094b45429de64ce9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1316643384
 GameObject:
   m_ObjectHideFlags: 0
@@ -2149,6 +2171,7 @@ MonoBehaviour:
   startPosition: {x: 0, y: 0, z: 0}
   endPosition: {x: 0, y: 0, z: 0}
   temp: {x: 0, y: 0, z: 0}
+  animator: {fileID: 1182321628}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

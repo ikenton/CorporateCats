@@ -32,6 +32,7 @@ public class MySlider : MonoBehaviour
     public Vector3 endPosition;
     private Vector3 currentPosition;
     public Vector3 temp;
+    public Animator animator;
     // Start is called before the first frame update
     void Start()
     {
@@ -85,12 +86,14 @@ public class MySlider : MonoBehaviour
         //TODO: make the cat move in the y direction so that it looks like its actually jumping and not just sliding
         if (hit && cat.transform.position.x != mouse.transform.position.x)
         {
+            animator.SetFloat("speed", 1);  // temp animation
             cat.transform.Translate(Vector3.right * 10f * Time.deltaTime);
             
         }
         
         if (cat.transform.position.x >= mouse.transform.position.x) //stop cat @ mouse position
         {
+            animator.SetFloat("speed", 0);
             cat.transform.position = new Vector3(mouse.transform.position.x, cat.transform.position.y, cat.transform.position.z);
             
         }
