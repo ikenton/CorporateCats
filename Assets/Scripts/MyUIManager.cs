@@ -189,7 +189,12 @@ public class MySlider : MonoBehaviour
     }*/
     public void CompletedPounce()
     {
-        highScore.text = "High Score: " + miceCount;
+        // calculate levels
+        int levelsGained = miceCount / 5;   // temp, will be changed to a more complex formula later... maybe
+        int currentLevel = PlayerPrefs.GetInt("pouncing_level", 1);
+        PlayerPrefs.SetInt("pouncing_level", currentLevel + levelsGained);  // might be able to be moved to a more generic script
+
+        highScore.text = "High Score: " + miceCount + "\nPouncing level: " + currentLevel + " -> " + (currentLevel + levelsGained);
         Time.timeScale = 0f;
         hitText.gameObject.SetActive(false);
         completedPopUp.SetActive(true);    
