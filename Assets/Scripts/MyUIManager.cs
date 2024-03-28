@@ -202,7 +202,9 @@ public class MySlider : MonoBehaviour
     }
     void GoToMainMenu()
     {
-        Debug.Log("Go to main menu");
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Overworld");
+
     }
     void ResetLevel() //called after a mouse is killed
     {
