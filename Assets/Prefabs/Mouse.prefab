@@ -173,4 +173,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouse: {fileID: 6986118280820979020}
   deadZone: -12
-  travelVelocity: 2
+  travelVelocity: 3

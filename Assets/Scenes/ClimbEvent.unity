@@ -495,8 +495,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouse: {fileID: 7367071793290135369, guid: cb4b9c5ff1c6ecd4295f86a702281d73, type: 3}
-  minWaitTime: 1
-  maxWaitTime: 3
+  minWaitTime: 0.5
+  maxWaitTime: 1.5
 --- !u!4 &723785231
 Transform:
   m_ObjectHideFlags: 0
