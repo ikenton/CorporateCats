@@ -32,6 +32,7 @@ public class MySlider : MonoBehaviour
     public Vector3 endPosition;
     private Vector3 currentPosition;
     public Vector3 temp;
+    public Animator animator;
     // Start is called before the first frame update
     void Start()
     {
@@ -85,12 +86,14 @@ public class MySlider : MonoBehaviour
         //TODO: make the cat move in the y direction so that it looks like its actually jumping and not just sliding
         if (hit && cat.transform.position.x != mouse.transform.position.x)
         {
+            animator.SetFloat("speed", 1);  // temp animation
             cat.transform.Translate(Vector3.right * 10f * Time.deltaTime);
             
         }
         
         if (cat.transform.position.x >= mouse.transform.position.x) //stop cat @ mouse position
         {
+            animator.SetFloat("speed", 0);
             cat.transform.position = new Vector3(mouse.transform.position.x, cat.transform.position.y, cat.transform.position.z);
             
         }
@@ -110,6 +113,8 @@ public class MySlider : MonoBehaviour
                
                 miceCount++;
                 UpdateMiceCountText("Mice Killed: ");
+
+                ChangeDifficulty(); // make game harder with every hit
                 
             }
             else if(!MovingBar.enter && Input.GetButtonDown("Jump"))
@@ -184,7 +189,12 @@ public class MySlider : MonoBehaviour
     }*/
     public void CompletedPounce()
     {
-        highScore.text = "High Score: " + miceCount;
+        // calculate levels
+        int levelsGained = miceCount / 5;   // temp, will be changed to a more complex formula later... maybe
+        int currentLevel = PlayerPrefs.GetInt("pouncing_skill", 1);
+        PlayerPrefs.SetInt("pouncing_skill", currentLevel + levelsGained);  // might be able to be moved to a more generic script
+
+        highScore.text = "High Score: " + miceCount + "\nPouncing level: " + currentLevel + " -> " + (currentLevel + levelsGained);
         Time.timeScale = 0f;
         hitText.gameObject.SetActive(false);
         completedPopUp.SetActive(true);    
@@ -192,7 +202,9 @@ public class MySlider : MonoBehaviour
     }
     void GoToMainMenu()
     {
-        Debug.Log("Go to main menu");
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Overworld");
+
     }
     void ResetLevel() //called after a mouse is killed
     {

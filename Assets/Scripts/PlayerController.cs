@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : PhysicsObject
+
 {    // Start is called before the first frame update
+    public Animator animator;
     void Start()
     {
         
@@ -16,15 +18,18 @@ public class PlayerController : PhysicsObject
         {
             GetComponent<SpriteRenderer>().flipX = true;
             desiredx = -4f;
+            animator.SetFloat("speed", 1);
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
             GetComponent<SpriteRenderer>().flipX = false;
             desiredx = 4f;
+            animator.SetFloat("speed", 1);
         }
         else
         {
             desiredx = 0f;
+            animator.SetFloat("speed", 0);
         }
     }
 
