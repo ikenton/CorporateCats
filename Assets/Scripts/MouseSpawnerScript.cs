@@ -5,25 +5,23 @@ using UnityEngine;
 public class MouseSpawnerScript : MonoBehaviour
 {
     public GameObject mouse;
-    public float spawnRate = 3;
+    public float minWaitTime;
+    public float maxWaitTime;
     private float timer = 0;
+    private bool isRunning = false;
     // Start is called before the first frame update
     void Start()
     {
-        
+        isRunning = true;
+        StartCoroutine(SpawnMouse());
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator SpawnMouse()
     {
-        if (timer < spawnRate)
+        while (isRunning)
         {
-            timer += Time.deltaTime;
-        }
-        else
-        {
+            yield return new WaitForSeconds(Random.Range(minWaitTime, maxWaitTime));
             Instantiate(mouse, transform.position, transform.rotation);
-            timer = 0;
         }
     }
 }

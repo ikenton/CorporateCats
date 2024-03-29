@@ -22,10 +22,21 @@ public class CatJump : MonoBehaviour
             cat.velocity = Vector2.up * jumpVelocity;
             isJumping = true;
         }
+
+        // Lets user drop cat midair 
+        if (Input.GetKeyDown(KeyCode.DownArrow) && isJumping)
+        {
+               cat.velocity = Vector2.down * jumpVelocity;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         isJumping = false;
+
+        if (collision.gameObject.name == "Mouse(Clone)")
+        {
+            Debug.Log("DIE");
+        }
     }
 }
