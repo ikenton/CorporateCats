@@ -39,7 +39,7 @@ public class Dragged : MonoBehaviour
     {
         // transform.position = originalPosition;
         dragging = false;
-        // source.PlayOneShot(dropClip);
+        source.PlayOneShot(dropClip);
         Debug.Log("Mouse up.");
     }
 
