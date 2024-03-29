@@ -20,7 +20,7 @@ public class CatJump : MonoBehaviour
     void Update()
     {
         // cat.velocity = Vector2.right * travelVelocity;  
-        if (Input.GetKeyDown(KeyCode.Space) == true && isJumping == false){   
+        if ((Input.GetKeyDown(KeyCode.Space) == true || Input.GetKeyDown(KeyCode.UpArrow)) && isJumping == false){   
             cat.velocity = Vector2.up * jumpVelocity;
             isJumping = true;
         }
