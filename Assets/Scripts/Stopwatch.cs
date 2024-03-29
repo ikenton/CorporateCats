@@ -6,8 +6,8 @@ using UnityEngine;
 public class Stopwatch : MonoBehaviour
 {
     private bool isRunning = false;
-    private float timeElapsed = 0;
-    [SerializeField] private TMP_Text timeText;
+    public float timeElapsed = 0;
+    [SerializeField] public TMP_Text timeText;
     // Start is called before the first frame update
     void Start()
     {
