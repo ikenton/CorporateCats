@@ -36,6 +36,7 @@ public class CatJump : MonoBehaviour
 
         if (collision.gameObject.name == "Mouse(Clone)")
         {
+            Time.timeScale = 0;
             Debug.Log("DIE");
         }
     }
