@@ -7,13 +7,13 @@ public class CatJump : MonoBehaviour
     public float travelVelocity;
     public float jumpVelocity;
     public Rigidbody2D cat;
-
-
+    public ClimbUIController logic;
+    
     public bool isJumping = false;
     // Start is called before the first frame update
     void Start()
     {
-        // logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<LogicScript>();
+        logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<ClimbUIController>(); 
     }
 
     // Update is called once per frame
@@ -38,7 +38,7 @@ public class CatJump : MonoBehaviour
 
         if (collision.gameObject.name == "Mouse(Clone)")
         {
-            Time.timeScale = 0;
+            logic.CompletedClimb();
             Debug.Log("DIE");
         }
     }

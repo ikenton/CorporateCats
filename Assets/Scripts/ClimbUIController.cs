@@ -1,8 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using System.Collections;
-using System.Collections.Generic;
 using System.Security.Cryptography;
 using TMPro;
 using Unity.VisualScripting;
@@ -12,13 +9,11 @@ using UnityEngine.UI;
 
 public class ClimbUIController : MonoBehaviour
 {
+    public Stopwatch score;
     public TextMeshProUGUI highScore;
-    public Transform cat;
-    public Transform mouse;
     public GameObject completedPopUp;
     public Button back;
-    public GameObject score;
-
+    // Start is called before the first frame update
     public void CompletedClimb()
     {
         // calculate levels
@@ -27,7 +22,7 @@ public class ClimbUIController : MonoBehaviour
         PlayerPrefs.SetInt("climbing_skill", currentLevel + levelsGained);  // might be able to be moved to a more generic script
         highScore.text = "High Score: " + levelsGained + "\nClimbing level: " + currentLevel + " -> " + (currentLevel + levelsGained);
         Time.timeScale = 0f;
-        completedPopUp.SetActive(true);    
+        completedPopUp.SetActive(true);
         back.onClick.AddListener(GoToMainMenu); //goes back to the selection area
     }
     public void GoToMainMenu()
@@ -35,4 +30,5 @@ public class ClimbUIController : MonoBehaviour
         Time.timeScale = 1f;
         SceneManager.LoadScene("Overworld");
     }
+
 }

@@ -123,6 +123,39 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &442978637
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 442978638}
+  m_Layer: 0
+  m_Name: Backdrop
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &442978638
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 442978637}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.59187937, y: 1.4481542, z: -0.04534838}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1552667172}
+  - {fileID: 1519004391}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &536598860
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,7 +181,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 536598860}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -432,6 +465,7 @@ MonoBehaviour:
   travelVelocity: 2
   jumpVelocity: 13
   cat: {fileID: 586433970}
+  logic: {fileID: 954830433}
   isJumping: 0
 --- !u!95 &586433975
 Animator:
@@ -563,7 +597,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &692922135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -806,7 +840,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 831076444}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: ClimbUIController, Assembly-CSharp
+        m_MethodName: GoToMainMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &831076444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -845,6 +891,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 831076441}
   m_CullTransparentMesh: 1
+--- !u!1 &954830432
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 954830434}
+  - component: {fileID: 954830433}
+  m_Layer: 0
+  m_Name: UIController
+  m_TagString: Logic
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &954830433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 954830432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89265c26af42b3c4d828121e0521e912, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: {fileID: 1511280603}
+  highScore: {fileID: 976378286}
+  completedPopUp: {fileID: 692922134}
+  back: {fileID: 831076443}
+--- !u!4 &954830434
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 954830432}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.59187937, y: 1.4481542, z: -0.04534838}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &976378284
 GameObject:
   m_ObjectHideFlags: 0
@@ -857,7 +951,7 @@ GameObject:
   - component: {fileID: 976378287}
   - component: {fileID: 976378286}
   m_Layer: 5
-  m_Name: CompletedPounceText
+  m_Name: CompletedClimbText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -904,7 +998,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'High Score:
 
-    Pouncing Skill: 1 -> 3'
+    Pouncing Skill:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1063,7 +1157,7 @@ GameObject:
   - component: {fileID: 1511280599}
   - component: {fileID: 1511280603}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1144,8 +1238,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 692922137}
   - {fileID: 536598861}
+  - {fileID: 692922137}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1259,12 +1353,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1519004387}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.17071687, w: 0.98532015}
-  m_LocalPosition: {x: 1.4, y: -4.54, z: 0}
-  m_LocalScale: {x: 23.611176, y: 7.4034925, z: 51.335575}
+  m_LocalRotation: {x: -0, y: -0, z: 0.17071687, w: 0.98532015}
+  m_LocalPosition: {x: 1.9918793, y: -5.9881544, z: 0.04534838}
+  m_LocalScale: {x: 23.611177, y: 7.403493, z: 51.335575}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 442978638}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 19.659}
 --- !u!61 &1519004392
 BoxCollider2D:
@@ -1388,12 +1482,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1552667169}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.17071687, w: 0.98532015}
-  m_LocalPosition: {x: -0, y: -0.74, z: 1}
-  m_LocalScale: {x: 23.532883, y: 23.532883, z: 26.297615}
+  m_LocalRotation: {x: -0, y: -0, z: 0.17071687, w: 0.98532015}
+  m_LocalPosition: {x: 0.59187937, y: -2.1881542, z: 1.0453484}
+  m_LocalScale: {x: 23.532885, y: 23.532885, z: 26.297615}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 442978638}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 19.659}
 --- !u!114 &1552667173
 MonoBehaviour:
@@ -1677,56 +1771,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1899810025}
   m_CullTransparentMesh: 1
---- !u!1 &2109107815
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2109107817}
-  - component: {fileID: 2109107816}
-  m_Layer: 0
-  m_Name: Logic Manager
-  m_TagString: Logic
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2109107816
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2109107815}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3771615ed347f3e4e91cb08d985178ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  highScore: {fileID: 0}
-  cat: {fileID: 0}
-  mouse: {fileID: 0}
-  completedPopUp: {fileID: 0}
-  back: {fileID: 0}
-  score: {fileID: 0}
---- !u!4 &2109107817
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2109107815}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.230081, y: -3.6317763, z: 13.768496}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1734,8 +1778,7 @@ SceneRoots:
   - {fileID: 683321585}
   - {fileID: 586433973}
   - {fileID: 723785231}
-  - {fileID: 1552667172}
-  - {fileID: 1519004391}
   - {fileID: 1511280602}
+  - {fileID: 442978638}
   - {fileID: 1476385891}
-  - {fileID: 2109107817}
+  - {fileID: 954830434}
