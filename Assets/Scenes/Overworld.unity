@@ -419,6 +419,14 @@ PrefabInstance:
       propertyPath: sceneName
       value: ClimbEvent
       objectReference: {fileID: 0}
+    - target: {fileID: 2183897497392934964, guid: f985a3ed0dd0e584e8e97bcd667ee7df, type: 3}
+      propertyPath: description
+      value: 
+      objectReference: {fileID: 902782841}
+    - target: {fileID: 2238698611487383759, guid: f985a3ed0dd0e584e8e97bcd667ee7df, type: 3}
+      propertyPath: m_Text
+      value: "Make Biscuits and \nimprove your baking skills"
+      objectReference: {fileID: 0}
     - target: {fileID: 2469638852143473710, guid: f985a3ed0dd0e584e8e97bcd667ee7df, type: 3}
       propertyPath: m_Text
       value: Baking
@@ -432,6 +440,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f985a3ed0dd0e584e8e97bcd667ee7df, type: 3}
+--- !u!102 &185957269 stripped
+TextMesh:
+  m_CorrespondingSourceObject: {fileID: 2238698611487383759, guid: f985a3ed0dd0e584e8e97bcd667ee7df, type: 3}
+  m_PrefabInstance: {fileID: 2136338929}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &265889400
 GameObject:
   m_ObjectHideFlags: 3
@@ -651,6 +664,14 @@ PrefabInstance:
       propertyPath: sceneName
       value: ClimbEvent
       objectReference: {fileID: 0}
+    - target: {fileID: 2183897497392934964, guid: f985a3ed0dd0e584e8e97bcd667ee7df, type: 3}
+      propertyPath: description
+      value: 
+      objectReference: {fileID: 1695751688}
+    - target: {fileID: 2238698611487383759, guid: f985a3ed0dd0e584e8e97bcd667ee7df, type: 3}
+      propertyPath: m_Text
+      value: Put your skills to the test
+      objectReference: {fileID: 0}
     - target: {fileID: 2469638852143473710, guid: f985a3ed0dd0e584e8e97bcd667ee7df, type: 3}
       propertyPath: m_Text
       value: 'Interview
@@ -666,6 +687,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f985a3ed0dd0e584e8e97bcd667ee7df, type: 3}
+--- !u!102 &902782841 stripped
+TextMesh:
+  m_CorrespondingSourceObject: {fileID: 2238698611487383759, guid: f985a3ed0dd0e584e8e97bcd667ee7df, type: 3}
+  m_PrefabInstance: {fileID: 153595240}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1384835523
 GameObject:
   m_ObjectHideFlags: 0
@@ -994,6 +1020,16 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!102 &1695751688 stripped
+TextMesh:
+  m_CorrespondingSourceObject: {fileID: 2238698611487383759, guid: f985a3ed0dd0e584e8e97bcd667ee7df, type: 3}
+  m_PrefabInstance: {fileID: 531836904}
+  m_PrefabAsset: {fileID: 0}
+--- !u!102 &1846976460 stripped
+TextMesh:
+  m_CorrespondingSourceObject: {fileID: 2238698611487383759, guid: f985a3ed0dd0e584e8e97bcd667ee7df, type: 3}
+  m_PrefabInstance: {fileID: 4028690717296475974}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1862267300
 GameObject:
   m_ObjectHideFlags: 0
@@ -1533,7 +1569,7 @@ Transform:
   m_GameObject: {fileID: 2081311792}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.2643461, y: -1.1310799, z: -11}
+  m_LocalPosition: {x: -0.1619749, y: -1.13406, z: -11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1625,6 +1661,14 @@ PrefabInstance:
       propertyPath: sceneName
       value: ClimbEvent
       objectReference: {fileID: 0}
+    - target: {fileID: 2183897497392934964, guid: f985a3ed0dd0e584e8e97bcd667ee7df, type: 3}
+      propertyPath: description
+      value: 
+      objectReference: {fileID: 185957269}
+    - target: {fileID: 2238698611487383759, guid: f985a3ed0dd0e584e8e97bcd667ee7df, type: 3}
+      propertyPath: m_Text
+      value: "Avoid obstacles and \nimprove climbing skills"
+      objectReference: {fileID: 0}
     - target: {fileID: 2469638852143473710, guid: f985a3ed0dd0e584e8e97bcd667ee7df, type: 3}
       propertyPath: m_Text
       value: Climbing
@@ -1689,6 +1733,14 @@ PrefabInstance:
     - target: {fileID: 2183897497392934964, guid: f985a3ed0dd0e584e8e97bcd667ee7df, type: 3}
       propertyPath: sceneName
       value: QuickTimeEvent
+      objectReference: {fileID: 0}
+    - target: {fileID: 2183897497392934964, guid: f985a3ed0dd0e584e8e97bcd667ee7df, type: 3}
+      propertyPath: description
+      value: 
+      objectReference: {fileID: 1846976460}
+    - target: {fileID: 2238698611487383759, guid: f985a3ed0dd0e584e8e97bcd667ee7df, type: 3}
+      propertyPath: m_Text
+      value: "Catch mice to \nimprove your skills"
       objectReference: {fileID: 0}
     - target: {fileID: 2469638852143473710, guid: f985a3ed0dd0e584e8e97bcd667ee7df, type: 3}
       propertyPath: m_Text
