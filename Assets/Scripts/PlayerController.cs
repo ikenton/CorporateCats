@@ -14,13 +14,13 @@ public class PlayerController : PhysicsObject
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
             GetComponent<SpriteRenderer>().flipX = true;
             desiredx = -4f;
             animator.SetFloat("speed", 1);
         }
-        else if (Input.GetKey(KeyCode.RightArrow))
+        else if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
             GetComponent<SpriteRenderer>().flipX = false;
             desiredx = 4f;
