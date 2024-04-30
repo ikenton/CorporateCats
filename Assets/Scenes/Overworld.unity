@@ -417,7 +417,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2183897497392934964, guid: f985a3ed0dd0e584e8e97bcd667ee7df, type: 3}
       propertyPath: sceneName
-      value: ClimbEvent
+      value: Baking
       objectReference: {fileID: 0}
     - target: {fileID: 2183897497392934964, guid: f985a3ed0dd0e584e8e97bcd667ee7df, type: 3}
       propertyPath: description
