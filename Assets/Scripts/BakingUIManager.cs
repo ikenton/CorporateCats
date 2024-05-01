@@ -38,6 +38,7 @@ public class BiscuitSlider : MonoBehaviour
     void Update()
     {
         UpdateBiscuitCountText("Biscuits Baked: ");
+        ManageBar();
     }
 
 
@@ -57,6 +58,10 @@ public class BiscuitSlider : MonoBehaviour
         numOfBiscuits.text = "Biscuits baked: " + biscuitCount;
     }
 
+    void ManageBar()
+    {
+        CompletedPounce();
+    }
 
     IEnumerator DisplaybakingTextCor(string burnt)
     {
