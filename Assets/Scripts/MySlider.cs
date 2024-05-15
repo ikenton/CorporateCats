@@ -50,6 +50,32 @@ public class MySlider : MonoBehaviour
     void Update()
     {
         UpdateMiceCountText("Mice Killed: ");
+        // autoplay is enabled
+        // TODO: make this not bad LOL
+        // Right now, this just makes the compuer win every time
+        // In the future, I want this to be based off of the player's skill level
+        // Higher skill levels will have a higher chance of winning
+        // This is to make it compatible for the "interview" mode
+        if (isAutoplay)
+        {
+            if(!hit)
+            {
+                if (MovingBar.enter)
+                {
+                    hit = true;
+                    DisplayHitText("HIT!");
+                    MoveCat();
+                    miceCount++;
+                    UpdateMiceCountText("Mice Killed: ");
+                    ChangeDifficulty();
+                }
+                else
+                {
+                    
+                }
+            }
+        }
+
         if (hit &&  cat.transform.position.x != 2.75f) //if cat has not pounced then move
         {
             MoveCat();
