@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -14,6 +16,7 @@ public class MenuUI : MonoBehaviour
     public GameObject howToInstructions;
     public Button back;
     public GameObject popUp;
+    public LevelManager levelManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +33,7 @@ public class MenuUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyUp(KeyCode.Escape))
+        if (Input.GetKeyUp(KeyCode.Escape))
         {
             Time.timeScale = 0.0f;
             popUp.SetActive(true);
@@ -56,12 +59,12 @@ public class MenuUI : MonoBehaviour
 
     public void OverworldOnPressed()
     {
+
+        levelManager.UpdateLevels();
         Time.timeScale = 1.0f;
         popUp.SetActive(false);
-        SceneManager.LoadScene("Overworld");
 
     }
-
     public void GoBack()
     {
         howToInstructions.SetActive(false);

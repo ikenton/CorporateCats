@@ -3539,6 +3539,7 @@ GameObject:
   - component: {fileID: 1790692373}
   - component: {fileID: 1790692372}
   - component: {fileID: 1790692371}
+  - component: {fileID: 1790692375}
   m_Layer: 5
   m_Name: Pause Menu
   m_TagString: Untagged
@@ -3585,6 +3586,7 @@ MonoBehaviour:
   howToInstructions: {fileID: 248460662}
   back: {fileID: 1953103030}
   popUp: {fileID: 942636669}
+  levelManager: {fileID: 1790692375}
 --- !u!114 &1790692372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3648,6 +3650,22 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1790692375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1790692369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3f329d815d07634dad5380d004dde06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  miceKilled: 0
+  climbTime: 0
+  bakingScore: 0
+  pouncingGame: {fileID: 2058152610}
 --- !u!1 &1814867276
 GameObject:
   m_ObjectHideFlags: 0

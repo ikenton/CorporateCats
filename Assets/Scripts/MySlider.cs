@@ -176,17 +176,7 @@ public class MySlider : MonoBehaviour
         StartCoroutine(DisplayHitTextCor(hit));
         //hitText.gameObject.SetActive(true);
     }
-    /*void LevelUp(int  level)
-    {
-        miceCount = 0;
-        Time.timeScale = 0f; //pauses the game
-        hitText.gameObject.SetActive(false);
-        levelPopUp.SetActive(true);
-        levelNum++;
-        levelUpTextNum.text = "Level " + levelNum;
-        back.onClick.AddListener(GoToMainMenu); //goes back to the selection area
-        playAgain.onClick.AddListener(Reload);
-    }*/
+    
     public void CompletedPounce()
     {
         // calculate levels
