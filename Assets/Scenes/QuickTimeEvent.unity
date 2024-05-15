@@ -555,6 +555,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cat: {fileID: 1182321622}
   mouse: {fileID: 1316643384}
+  uiManager: {fileID: 2058152608}
+  script: {fileID: 0}
+  chanceOfHit: 0
 --- !u!1 &248460662
 GameObject:
   m_ObjectHideFlags: 0
@@ -4224,6 +4227,9 @@ MonoBehaviour:
   endPosition: {x: 0, y: 0, z: 0}
   temp: {x: 0, y: 0, z: 0}
   animator: {fileID: 1182321628}
+  isAutoplay: 1
+  initialPlayerLevel: 10
+  autoplaySkillLevel: 20
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

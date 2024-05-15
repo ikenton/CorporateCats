@@ -34,6 +34,9 @@ public class MySlider : MonoBehaviour
     public Vector3 temp;
     public Animator animator;
     public bool isAutoplay = false;
+    public int initialPlayerLevel = 15;
+    // dictates what skill level the player needs to be at to guarantee hits when autoplaying
+    public int autoplaySkillLevel = 20;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +47,7 @@ public class MySlider : MonoBehaviour
         UpdateMiceCountText("Mice Killed: ");
         ChangeDifficulty();
         completedPopUp.SetActive(false);
+        // initialPlayerLevel = PlayerPrefs.GetInt("pouncing_skill", 1);
     }
 
     // Update is called once per frame
@@ -56,31 +60,24 @@ public class MySlider : MonoBehaviour
         // In the future, I want this to be based off of the player's skill level
         // Higher skill levels will have a higher chance of winning
         // This is to make it compatible for the "interview" mode
-        if (isAutoplay)
-        {
-            if(!hit)
-            {
-                if (MovingBar.enter)
-                {
-                    hit = true;
-                    DisplayHitText("HIT!");
-                    MoveCat();
-                    miceCount++;
-                    UpdateMiceCountText("Mice Killed: ");
-                    ChangeDifficulty();
-                }
-                else
-                {
-                    
-                }
-            }
-        }
+
 
         if (hit &&  cat.transform.position.x != 2.75f) //if cat has not pounced then move
         {
             MoveCat();
         }
         ManageBar();
+    }
+
+    public void HandleHit()
+    {
+        Debug.Log("ran");
+        hit = true;
+        DisplayHitText("HIT!");
+        MoveCat();
+        miceCount++;
+        UpdateMiceCountText("Mice Killed: ");
+        ChangeDifficulty();
     }
 
     void OffsetGreenArea()
