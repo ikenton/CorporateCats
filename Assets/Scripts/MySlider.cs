@@ -33,6 +33,7 @@ public class MySlider : MonoBehaviour
     private Vector3 currentPosition;
     public Vector3 temp;
     public Animator animator;
+    public bool isAutoplay = false;
     // Start is called before the first frame update
     void Start()
     {
