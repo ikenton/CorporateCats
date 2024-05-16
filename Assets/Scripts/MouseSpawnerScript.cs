@@ -7,7 +7,6 @@ public class MouseSpawnerScript : MonoBehaviour
     public GameObject mouse;
     public float minWaitTime;
     public float maxWaitTime;
-    private float timer = 0;
     private bool isRunning = false;
     // Start is called before the first frame update
     void Start()
