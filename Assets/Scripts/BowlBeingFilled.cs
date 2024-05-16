@@ -28,7 +28,6 @@ public class BowlBeingFilled : MonoBehaviour
     public void Start()
     {
         x = 0;
-        currentPlayerLevel = PlayerPrefs.GetInt("baking_skill", 1);
         completedPopUp.SetActive(false);
         ShuffleIngredients(ingredients);
         foreach (GameObject ingredient in ingredients)
@@ -113,7 +112,7 @@ public class BowlBeingFilled : MonoBehaviour
         bowl.GetComponent<SpriteRenderer>().enabled = true;
         biscuit.GetComponent<SpriteRenderer>().enabled = false;
     }
-    void OnTriggerEnter2D(Collider2D col)
+    public void OnTriggerEnter2D(Collider2D col)
     {
         Debug.Log("TRIGGERED.");
         if (col.gameObject == ingredientOrder[x])
@@ -142,7 +141,7 @@ public class BowlBeingFilled : MonoBehaviour
             back.onClick.AddListener(GoToMainMenu);
             currentPlayerLevel = PlayerPrefs.GetInt("baking_skill", 1);
             levelsGained = biscuitCount / 2;
-            PlayerPrefs.SetInt("pouncing_skill", currentPlayerLevel + levelsGained);
+            PlayerPrefs.SetInt("baking_skill", currentPlayerLevel + levelsGained);
             highScore.text = "High Score: " + biscuitCount + "\nPouncing level: " + currentPlayerLevel + " -> " + (currentPlayerLevel + levelsGained);
         }
         
