@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Baking.unity
     guid: 26c2dd50a98998247973b6f15ab48578
+  - enabled: 1
+    path: Assets/Scenes/InterviewResults.unity
+    guid: 2144ddba37a145c46b92e78a41fc2e06
   m_configObjects: {}

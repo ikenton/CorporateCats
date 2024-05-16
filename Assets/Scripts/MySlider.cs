@@ -22,6 +22,7 @@ public class MySlider : MonoBehaviour
     public Transform mouse;
     public GameObject completedPopUp;
     public Button back;
+    public Button next;
     public GameObject interviewUI;
     public static float widthOfBar = 410f;
     public float speed = 0.5f;
@@ -217,6 +218,10 @@ public class MySlider : MonoBehaviour
         else if (isAutoplay)
         {
             highScore.text = "Mice slain: " + miceCount;
+            next.gameObject.SetActive(true);
+            // calculate grade
+            InterviewManager.Instance.pouncingGrade = miceCount / interviewUI.GetComponent<Timer>().goal;
+            next.onClick.AddListener(InterviewManager.Instance.NextStage);
         }
         Time.timeScale = 0f;
         hitText.gameObject.SetActive(false);
