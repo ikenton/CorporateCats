@@ -28,7 +28,7 @@ public class LevelManager : MonoBehaviour
     }
     public int CalculateBakingLvl()
     {
-        return 0; //replace 0 with the number of biscuits made.
+        return bakingGame.biscuitCount / 2; //replace 0 with the number of biscuits made.
     }
 
     public void UpdateLevels()
@@ -52,7 +52,7 @@ public class LevelManager : MonoBehaviour
         if(bakingGame != null)
         {
             currentLevel = PlayerPrefs.GetInt("baking_skill", 1);
-            levelsGained = CalculateClimbLvl();
+            levelsGained = CalculateBakingLvl();
             PlayerPrefs.SetInt("baking_skill", currentLevel+levelsGained);
         }
         SceneManager.LoadScene("Overworld");
