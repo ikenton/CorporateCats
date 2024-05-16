@@ -6,14 +6,17 @@ using UnityEngine.SceneManagement;
 public class NPC : MonoBehaviour
 {
     [SerializeField] private TextMesh text;
+    [SerializeField] private TextMesh description;
     [SerializeField] private string sceneName;
-
+    public bool isInterview = false;
     private bool focused = false;
 
     // Start is called before the first frame update
     void Start()
     {
         MeshRenderer meshRenderer = text.GetComponent<MeshRenderer>();
+        MeshRenderer meshRendererDescription = description.GetComponent<MeshRenderer>();
+        meshRendererDescription.enabled = false;
         meshRenderer.enabled = false;
     }
 
@@ -22,6 +25,10 @@ public class NPC : MonoBehaviour
     {
         if (focused && Input.GetKeyDown(KeyCode.Space) && sceneName != "")
         {
+            if (isInterview)
+            {
+                InterviewManager.Instance.isAutoplay = true;
+            }
             SceneManager.LoadScene(sceneName);
         }
     }
@@ -31,6 +38,8 @@ public class NPC : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             MeshRenderer meshRenderer = text.GetComponent<MeshRenderer>();
+            MeshRenderer meshRendererDescription = description.GetComponent<MeshRenderer>();
+            meshRendererDescription.enabled = true;
             meshRenderer.enabled = true;
 
             focused = true;
@@ -42,6 +51,8 @@ public class NPC : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             MeshRenderer meshRenderer = text.GetComponent<MeshRenderer>();
+            MeshRenderer meshRendererDescription = description.GetComponent<MeshRenderer>();
+            meshRendererDescription.enabled = false;
             meshRenderer.enabled = false;
             focused = false;
         }

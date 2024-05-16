@@ -1,6 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scenes/Menu.unity.meta
+guid: 65341a37d6f8c584781ae67f6473d80f
+========
 guid: 731c13610ad04dd43a7b8d41831a584c
 folderAsset: yes
+>>>>>>>> BakingEvent:Assets/Sprites/Baking.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

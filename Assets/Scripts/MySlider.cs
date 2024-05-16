@@ -22,6 +22,7 @@ public class MySlider : MonoBehaviour
     public Transform mouse;
     public GameObject completedPopUp;
     public Button back;
+    public GameObject interviewUI;
     public static float widthOfBar = 410f;
     public float speed = 0.5f;
     public bool hit = false;
@@ -33,6 +34,10 @@ public class MySlider : MonoBehaviour
     private Vector3 currentPosition;
     public Vector3 temp;
     public Animator animator;
+    public bool isAutoplay = false;
+    public int initialPlayerLevel = 15;
+    // dictates what skill level the player needs to be at to guarantee hits when autoplaying
+    public int autoplaySkillLevel = 20;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,17 +48,39 @@ public class MySlider : MonoBehaviour
         UpdateMiceCountText("Mice Killed: ");
         ChangeDifficulty();
         completedPopUp.SetActive(false);
+        // initialPlayerLevel = PlayerPrefs.GetInt("pouncing_skill", 1);
+        isAutoplay = InterviewManager.Instance.isAutoplay;
+        interviewUI.SetActive(isAutoplay);
     }
 
     // Update is called once per frame
     void Update()
     {
         UpdateMiceCountText("Mice Killed: ");
+        // autoplay is enabled
+        // TODO: make this not bad LOL
+        // Right now, this just makes the compuer win every time
+        // In the future, I want this to be based off of the player's skill level
+        // Higher skill levels will have a higher chance of winning
+        // This is to make it compatible for the "interview" mode
+
+
         if (hit &&  cat.transform.position.x != 2.75f) //if cat has not pounced then move
         {
             MoveCat();
         }
         ManageBar();
+    }
+
+    public void HandleHit()
+    {
+        Debug.Log("ran");
+        hit = true;
+        DisplayHitText("HIT!");
+        MoveCat();
+        miceCount++;
+        UpdateMiceCountText("Mice Killed: ");
+        ChangeDifficulty();
     }
 
     void OffsetGreenArea()
@@ -176,25 +203,21 @@ public class MySlider : MonoBehaviour
         StartCoroutine(DisplayHitTextCor(hit));
         //hitText.gameObject.SetActive(true);
     }
-    /*void LevelUp(int  level)
-    {
-        miceCount = 0;
-        Time.timeScale = 0f; //pauses the game
-        hitText.gameObject.SetActive(false);
-        levelPopUp.SetActive(true);
-        levelNum++;
-        levelUpTextNum.text = "Level " + levelNum;
-        back.onClick.AddListener(GoToMainMenu); //goes back to the selection area
-        playAgain.onClick.AddListener(Reload);
-    }*/
+    
     public void CompletedPounce()
     {
         // calculate levels
-        int levelsGained = miceCount / 5;   // temp, will be changed to a more complex formula later... maybe
-        int currentLevel = PlayerPrefs.GetInt("pouncing_skill", 1);
-        PlayerPrefs.SetInt("pouncing_skill", currentLevel + levelsGained);  // might be able to be moved to a more generic script
-
-        highScore.text = "High Score: " + miceCount + "\nPouncing level: " + currentLevel + " -> " + (currentLevel + levelsGained);
+        if (!isAutoplay)
+        {
+            int currentLevel = PlayerPrefs.GetInt("pouncing_skill", 1);
+            int levelsGained = miceCount / 5;   // temp, will be changed to a more complex formula later... maybe
+            PlayerPrefs.SetInt("pouncing_skill", currentLevel + levelsGained);  // might be able to be moved to a more generic script
+            highScore.text = "High Score: " + miceCount + "\nPouncing level: " + currentLevel + " -> " + (currentLevel + levelsGained);
+        }
+        else if (isAutoplay)
+        {
+            highScore.text = "Mice slain: " + miceCount;
+        }
         Time.timeScale = 0f;
         hitText.gameObject.SetActive(false);
         completedPopUp.SetActive(true);    
