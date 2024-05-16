@@ -20,7 +20,12 @@ public class MouseSpawnerScript : MonoBehaviour
         while (isRunning)
         {
             float scoreDiff = Stopwatch.timeElapsed / 50;
-            yield return new WaitForSeconds(Random.Range(minWaitTime, maxWaitTime - scoreDiff));
+            if(scoreDiff > 0.75){
+                yield return new WaitForSeconds(Random.Range(0.25f, maxWaitTime - 0.75f));
+            }
+            else{
+                yield return new WaitForSeconds(Random.Range(minWaitTime, maxWaitTime - scoreDiff));
+            }
             Instantiate(mouse, transform.position, transform.rotation);
         }
     }
