@@ -42,6 +42,7 @@ public class InterviewManager : MonoBehaviour
 
     public void NextStage()
     {
+        Debug.Log(climbingGrade);
         Time.timeScale = 1f;
         for (int i = 0; i < levels.Length; i++)
         {

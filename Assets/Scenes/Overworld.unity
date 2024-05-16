@@ -400,7 +400,10 @@ MonoBehaviour:
   levels:
   - QuickTimeEvent
   - ClimbEvent
-  - BakingEvent
+  - Baking
+  pouncingGrade: 0
+  climbingGrade: 0
+  bakingGrade: 0
 --- !u!4 &123315465
 Transform:
   m_ObjectHideFlags: 0

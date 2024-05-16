@@ -13,9 +13,36 @@ public class ClimbUIController : MonoBehaviour
     public TextMeshProUGUI highScore;
     public GameObject completedPopUp;
     public Button back;
+    public Button next;
+    public int goalTime;    // AHH HARDCODED
     // Start is called before the first frame update
+    private void Start()
+    {
+        next.gameObject.SetActive(false);
+        if (InterviewManager.Instance != null)
+        {
+            if (InterviewManager.Instance.isAutoplay)
+            {
+                next.gameObject.SetActive(true);
+            }
+        }
+    }
+
     public void CompletedClimb()
     {
+        if (InterviewManager.Instance != null)
+        {
+            if (InterviewManager.Instance.isAutoplay)
+            {
+                highScore.text = "Time survived: " + Stopwatch.timeElapsed.ToString("F2");
+                Time.timeScale = 0f;
+                completedPopUp.SetActive(true);
+                next.onClick.AddListener(InterviewManager.Instance.NextStage);
+                back.onClick.AddListener(GoToMainMenu);
+                InterviewManager.Instance.climbingGrade = Stopwatch.timeElapsed / goalTime;
+                return;
+            }
+        }
         // calculate levels
         int levelsGained = Mathf.RoundToInt(Stopwatch.timeElapsed) / 10;   // 1 level per 10 seconds survived? we'll figure it out
         int currentLevel = PlayerPrefs.GetInt("climbing_skill", 1);
