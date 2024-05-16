@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class BowlBeingFilled : MonoBehaviour
 {
+     public TextMeshProUGUI highScore;
 
     [SerializeField] private AudioClip dropClip, finish;
     public GameObject bowl;
@@ -16,9 +17,16 @@ public class BowlBeingFilled : MonoBehaviour
     public Image[] orderDisplaySlots;
     public Boolean correct = true;
     public Vector3[] initialPositions;
-    private Vector3 bowlInitialPosition;
+    public TextMeshProUGUI numOfBiscuits;
+    public GameObject completedPopUp;
+    public Button back;
+    public int currentPlayerLevel;
+    public int levelsGained;
     void Start()
     {
+        x = 0;
+        currentPlayerLevel = PlayerPrefs.GetInt("baking_skill", 1);
+        completedPopUp.SetActive(false);
         ShuffleIngredients(ingredients);
         foreach (GameObject ingredient in ingredients)
         {
@@ -29,6 +37,8 @@ public class BowlBeingFilled : MonoBehaviour
         Debug.Log(x);
         SaveInitialPositions();
         biscuit.GetComponent<SpriteRenderer>().enabled = false;
+        biscuitCount = 0;
+        levelsGained = 0; 
     }
 
     void ShuffleIngredients(GameObject[] ingredientsList)
@@ -64,6 +74,12 @@ public class BowlBeingFilled : MonoBehaviour
         {
             initialPositions[i] = ingredients[i].transform.position;
         }
+    }
+    void UpdateBiscuitCount()
+    {
+        biscuitCount++;
+        numOfBiscuits.text = biscuitCount.ToString();
+
     }
 
    void ResetGame()
@@ -107,7 +123,8 @@ public class BowlBeingFilled : MonoBehaviour
             if (x==3)
             {
                 Transform bowlTransform = this.gameObject.GetComponent<Transform>();
-                bowlTransform.localScale = new Vector3(9f, 9f, 1f);
+                bowlTransform.localScale = new Vector3(12f, 12f, 1f);
+                bowl.GetComponent<SpriteRenderer>().enabled = false;
                 biscuit.GetComponent<SpriteRenderer>().enabled = true;
                 AudioSource.PlayClipAtPoint(finish, transform.position);
                 ResetGame();
@@ -116,7 +133,12 @@ public class BowlBeingFilled : MonoBehaviour
         else
         {
             // game over!
+            levelsGained = (int)Math.Floor((double)biscuitCount / 2);
             Debug.Log("You lose!");
+            completedPopUp.SetActive(true);
+            back.onClick.AddListener(GoToMainMenu);
+            PlayerPrefs.SetInt("pouncing_skill", currentPlayerLevel + levelsGained);
+            highScore.text = "High Score: " + biscuitCount + "\nPouncing level: " + currentPlayerLevel + " -> " + (currentPlayerLevel + levelsGained);
         }
     }
 }
