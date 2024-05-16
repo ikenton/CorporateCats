@@ -219,6 +219,8 @@ public class MySlider : MonoBehaviour
         {
             highScore.text = "Mice slain: " + miceCount;
             next.gameObject.SetActive(true);
+            // calculate grade
+            InterviewManager.Instance.pouncingGrade = miceCount / interviewUI.GetComponent<Timer>().goal;
             next.onClick.AddListener(InterviewManager.Instance.NextStage);
         }
         Time.timeScale = 0f;
