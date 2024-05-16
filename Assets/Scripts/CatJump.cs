@@ -17,6 +17,8 @@ public class CatJump : MonoBehaviour
     public int goalTime;
     public int lives;
     public bool isAutoplay = false;
+    public int initialPlayerLevel;
+    public int autoplaySkillLevel;
 
     public float jumpTimer = 0.0f;
     public float fastFallStartTime = 0.50f;
@@ -109,7 +111,12 @@ public class CatJump : MonoBehaviour
         {
             if (!isJumping)
             {
-                Jump();
+                int randomNumber = Random.Range(0, 100);
+                double autoplayChance = ((double)initialPlayerLevel / (double)autoplaySkillLevel) * 100.00;
+                if (randomNumber <= autoplayChance)
+                {
+                    Jump();
+                }
 
             }
             Debug.Log("Enemy entered");
