@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class CatJump : MonoBehaviour
@@ -8,7 +9,13 @@ public class CatJump : MonoBehaviour
     public float jumpVelocity;
     public Rigidbody2D cat;
     public ClimbUIController logic;
+    public GameObject ui;
+    public GameObject interviewStats;
+    public TMP_Text goalsText;
+    public TMP_Text livesText;
 
+    public int goalTime;
+    public int lives;
     public bool isAutoplay = false;
 
     public float jumpTimer = 0.0f;
@@ -19,7 +26,16 @@ public class CatJump : MonoBehaviour
     void Start()
     {
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<ClimbUIController>(); 
-        isAutoplay = InterviewManager.Instance.isAutoplay;
+        if (InterviewManager.Instance != null)
+        {
+            isAutoplay = InterviewManager.Instance.isAutoplay;
+        }
+        if (isAutoplay)
+        {
+            interviewStats.SetActive(true);
+            goalsText.text = "Goal: " + goalTime;
+            livesText.text = "Lives: " + lives;
+        }
     }
 
     // Update is called once per frame
@@ -67,6 +83,17 @@ public class CatJump : MonoBehaviour
 
         if (collision.gameObject.name == "Mouse(Clone)")
         {
+            if (isAutoplay)
+            {
+                if (lives > 1)
+                {
+                    lives--;
+                    livesText.text = "Lives: " + lives;
+                    collision.gameObject.SetActive(false);
+                    return;
+                }
+                logic.CompletedClimb();
+            }
             logic.CompletedClimb();
             Debug.Log("DIE");
         }
