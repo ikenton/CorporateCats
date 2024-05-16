@@ -970,7 +970,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2136982714897329891, guid: f985a3ed0dd0e584e8e97bcd667ee7df, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.7916667
+      value: 0.9791667
       objectReference: {fileID: 0}
     - target: {fileID: 2183897497392934964, guid: f985a3ed0dd0e584e8e97bcd667ee7df, type: 3}
       propertyPath: sceneName
@@ -990,9 +990,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2469638852143473710, guid: f985a3ed0dd0e584e8e97bcd667ee7df, type: 3}
       propertyPath: m_Text
-      value: 'Interview
-
-        (not implemented)'
+      value: Interview
       objectReference: {fileID: 0}
     - target: {fileID: 4773531937060691629, guid: f985a3ed0dd0e584e8e97bcd667ee7df, type: 3}
       propertyPath: m_Name
