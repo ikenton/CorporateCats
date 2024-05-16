@@ -42,7 +42,6 @@ public class InterviewManager : MonoBehaviour
 
     public void NextStage()
     {
-        Debug.Log(climbingGrade);
         Time.timeScale = 1f;
         for (int i = 0; i < levels.Length; i++)
         {
@@ -50,7 +49,7 @@ public class InterviewManager : MonoBehaviour
             {
                 if (i == levels.Length - 1)
                 {
-                    SceneManager.LoadScene("Overworld");    // temp, move to final scene later
+                    SceneManager.LoadScene("InterviewResults");    // temp, move to final scene later
                 }
                 else
                 {
