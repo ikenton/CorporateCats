@@ -22,6 +22,7 @@ public class MySlider : MonoBehaviour
     public Transform mouse;
     public GameObject completedPopUp;
     public Button back;
+    public GameObject interviewUI;
     public static float widthOfBar = 410f;
     public float speed = 0.5f;
     public bool hit = false;
@@ -49,6 +50,7 @@ public class MySlider : MonoBehaviour
         completedPopUp.SetActive(false);
         // initialPlayerLevel = PlayerPrefs.GetInt("pouncing_skill", 1);
         isAutoplay = InterviewManager.Instance.isAutoplay;
+        interviewUI.SetActive(isAutoplay);
     }
 
     // Update is called once per frame
@@ -211,6 +213,10 @@ public class MySlider : MonoBehaviour
             int levelsGained = miceCount / 5;   // temp, will be changed to a more complex formula later... maybe
             PlayerPrefs.SetInt("pouncing_skill", currentLevel + levelsGained);  // might be able to be moved to a more generic script
             highScore.text = "High Score: " + miceCount + "\nPouncing level: " + currentLevel + " -> " + (currentLevel + levelsGained);
+        }
+        else if (isAutoplay)
+        {
+            highScore.text = "Mice slain: " + miceCount;
         }
         Time.timeScale = 0f;
         hitText.gameObject.SetActive(false);
