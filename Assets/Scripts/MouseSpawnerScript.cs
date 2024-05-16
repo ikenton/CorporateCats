@@ -19,7 +19,8 @@ public class MouseSpawnerScript : MonoBehaviour
     {
         while (isRunning)
         {
-            yield return new WaitForSeconds(Random.Range(minWaitTime, maxWaitTime));
+            float scoreDiff = Stopwatch.timeElapsed / 50;
+            yield return new WaitForSeconds(Random.Range(minWaitTime, maxWaitTime - scoreDiff));
             Instantiate(mouse, transform.position, transform.rotation);
         }
     }

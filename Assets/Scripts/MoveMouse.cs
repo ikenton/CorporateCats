@@ -16,7 +16,7 @@ public class MoveMouse : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        float scoreDiff = Stopwatch.timeElapsed / 2;
+        float scoreDiff = Stopwatch.timeElapsed / 20;
         //print(scoreDiff);
         if (scoreDiff < 1){
             mouse.velocity += Vector2.left * travelVelocity * Time.fixedDeltaTime;
