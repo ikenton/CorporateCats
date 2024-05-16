@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class CatJump : MonoBehaviour
@@ -8,21 +9,43 @@ public class CatJump : MonoBehaviour
     public float jumpVelocity;
     public Rigidbody2D cat;
     public ClimbUIController logic;
+    public GameObject ui;
+    public GameObject interviewStats;
+    public TMP_Text goalsText;
+    public TMP_Text livesText;
+
+    public int goalTime;
+    public int lives;
+    public bool isAutoplay = false;
+    public int initialPlayerLevel;
+    public int autoplaySkillLevel;
+
+    public float jumpTimer = 0.0f;
+    public float fastFallStartTime = 0.50f;
     
     public bool isJumping = false;
     // Start is called before the first frame update
     void Start()
     {
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<ClimbUIController>(); 
+        if (InterviewManager.Instance != null)
+        {
+            isAutoplay = InterviewManager.Instance.isAutoplay;
+        }
+        if (isAutoplay)
+        {
+            interviewStats.SetActive(true);
+            goalsText.text = "Goal: " + goalTime;
+            livesText.text = "Lives: " + lives;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         // cat.velocity = Vector2.right * travelVelocity;  
-        if ((Input.GetKeyDown(KeyCode.Space) == true || Input.GetKeyDown(KeyCode.UpArrow)) && isJumping == false){   
-            cat.velocity = Vector2.up * jumpVelocity;
-            isJumping = true;
+        if ((Input.GetKeyDown(KeyCode.Space) == true || Input.GetKeyDown(KeyCode.UpArrow)) && isJumping == false){
+            Jump();
         }
 
         // Lets user drop cat midair 
@@ -30,6 +53,30 @@ public class CatJump : MonoBehaviour
         {
                cat.velocity = Vector2.down * jumpVelocity;
         }
+        if (isAutoplay)
+        {
+            if (isJumping)
+            {
+                if (jumpTimer > fastFallStartTime)
+                {
+                    cat.velocity = Vector2.down * jumpVelocity;
+                }
+                else
+                {
+                    jumpTimer += Time.deltaTime;
+                }
+            }
+            else if (!isJumping)
+            {
+                jumpTimer = 0.0f;
+            }
+        }
+    }
+
+    public void Jump()
+    {
+        cat.velocity = Vector2.up * jumpVelocity;
+        isJumping = true;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -38,8 +85,41 @@ public class CatJump : MonoBehaviour
 
         if (collision.gameObject.name == "Mouse(Clone)")
         {
+            if (isAutoplay)
+            {
+                if (lives > 1)
+                {
+                    lives--;
+                    livesText.text = "Lives: " + lives;
+                    collision.gameObject.SetActive(false);
+                    return;
+                }
+                logic.CompletedClimb();
+            }
             logic.CompletedClimb();
             Debug.Log("DIE");
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!isAutoplay)
+        {
+            return;
+        }
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            if (!isJumping)
+            {
+                int randomNumber = Random.Range(0, 100);
+                double autoplayChance = ((double)initialPlayerLevel / (double)autoplaySkillLevel) * 100.00;
+                if (randomNumber <= autoplayChance)
+                {
+                    Jump();
+                }
+
+            }
+            Debug.Log("Enemy entered");
         }
     }
 }

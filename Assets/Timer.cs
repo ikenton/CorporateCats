@@ -6,15 +6,17 @@ using UnityEngine;
 public class Timer : MonoBehaviour
 {
     private bool isRunning = false;
-    public float timeLeft = 60;
+    public float timeLeft = 30;
+    public float goal = 20;
     public TMP_Text timeText;
+    public TMP_Text goalText;
     public MySlider uiManager;
     // Start is called before the first frame update
     void Start()
     {
         if (InterviewManager.Instance.isAutoplay)
         {
-            timeLeft = 10;
+            goalText.text = "Goal: " + goal.ToString();
             StartTimer();
         }
     }

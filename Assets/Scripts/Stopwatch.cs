@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class Stopwatch : MonoBehaviour
 {
-
     private bool isRunning = false;
     static public float timeElapsed;
     [SerializeField] public TMP_Text timeText;

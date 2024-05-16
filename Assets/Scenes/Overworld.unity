@@ -397,6 +397,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAutoplay: 0
+  levels:
+  - QuickTimeEvent
+  - ClimbEvent
+  - Baking
+  pouncingGrade: 0
+  climbingGrade: 0
+  bakingGrade: 0
 --- !u!4 &123315465
 Transform:
   m_ObjectHideFlags: 0
@@ -970,7 +977,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2136982714897329891, guid: f985a3ed0dd0e584e8e97bcd667ee7df, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.7916667
+      value: 0.9791667
       objectReference: {fileID: 0}
     - target: {fileID: 2183897497392934964, guid: f985a3ed0dd0e584e8e97bcd667ee7df, type: 3}
       propertyPath: sceneName
@@ -990,9 +997,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2469638852143473710, guid: f985a3ed0dd0e584e8e97bcd667ee7df, type: 3}
       propertyPath: m_Text
-      value: 'Interview
-
-        (not implemented)'
+      value: Interview
       objectReference: {fileID: 0}
     - target: {fileID: 4773531937060691629, guid: f985a3ed0dd0e584e8e97bcd667ee7df, type: 3}
       propertyPath: m_Name
@@ -3299,11 +3304,11 @@ PrefabInstance:
     - target: {fileID: 5000000000000000, guid: 85a5c7ed3fa999a794bb7ca052ffdfb0, type: 3}
       propertyPath: m_TileSpriteArray.Array.data[4].m_Data
       value: 
-      objectReference: {fileID: 21300000, guid: e86a67cad2cfedce5c648cd1b2a277c9, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 5000000000000000, guid: 85a5c7ed3fa999a794bb7ca052ffdfb0, type: 3}
       propertyPath: m_TileSpriteArray.Array.data[5].m_Data
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 21300000, guid: e86a67cad2cfedce5c648cd1b2a277c9, type: 3}
     - target: {fileID: 5000000000000000, guid: 85a5c7ed3fa999a794bb7ca052ffdfb0, type: 3}
       propertyPath: m_TileSpriteArray.Array.data[6].m_Data
       value: 
@@ -3358,11 +3363,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5000000000000000, guid: 85a5c7ed3fa999a794bb7ca052ffdfb0, type: 3}
       propertyPath: m_TileSpriteArray.Array.data[4].m_RefCount
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5000000000000000, guid: 85a5c7ed3fa999a794bb7ca052ffdfb0, type: 3}
       propertyPath: m_TileSpriteArray.Array.data[5].m_RefCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5000000000000000, guid: 85a5c7ed3fa999a794bb7ca052ffdfb0, type: 3}
       propertyPath: m_TileSpriteArray.Array.data[6].m_RefCount
@@ -4086,7 +4091,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5000000000000000, guid: 85a5c7ed3fa999a794bb7ca052ffdfb0, type: 3}
       propertyPath: m_Tiles.Array.data[75].second.m_TileSpriteIndex
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5000000000000000, guid: 85a5c7ed3fa999a794bb7ca052ffdfb0, type: 3}
       propertyPath: m_Tiles.Array.data[76].second.m_TileSpriteIndex
