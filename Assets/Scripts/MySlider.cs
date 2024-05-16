@@ -48,6 +48,7 @@ public class MySlider : MonoBehaviour
         ChangeDifficulty();
         completedPopUp.SetActive(false);
         // initialPlayerLevel = PlayerPrefs.GetInt("pouncing_skill", 1);
+        isAutoplay = InterviewManager.Instance.isAutoplay;
     }
 
     // Update is called once per frame

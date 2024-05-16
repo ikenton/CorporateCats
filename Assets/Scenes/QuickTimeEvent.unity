@@ -4402,7 +4402,7 @@ MonoBehaviour:
   endPosition: {x: 0, y: 0, z: 0}
   temp: {x: 0, y: 0, z: 0}
   animator: {fileID: 1182321628}
-  isAutoplay: 1
+  isAutoplay: 0
   initialPlayerLevel: 10
   autoplaySkillLevel: 20
 --- !u!1660057539 &9223372036854775807
