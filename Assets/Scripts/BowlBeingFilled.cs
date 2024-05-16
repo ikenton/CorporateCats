@@ -29,6 +29,7 @@ public class BowlBeingFilled : MonoBehaviour
     public Button back;
     void Start()
     {
+        x = 0;
         completedPopUp.SetActive(false);
         ShuffleIngredients(ingredients);
         foreach (GameObject ingredient in ingredients)
