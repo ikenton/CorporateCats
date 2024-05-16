@@ -789,7 +789,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &262260462
 RectTransform:
   m_ObjectHideFlags: 0
@@ -805,10 +805,10 @@ RectTransform:
   - {fileID: 968303885}
   m_Father: {fileID: 1785987603}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 215, y: -153.9425}
+  m_SizeDelta: {x: 192.1, y: 39.525}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &262260463
 MonoBehaviour:
@@ -8406,6 +8406,7 @@ MonoBehaviour:
   mouse: {fileID: 1316643386}
   completedPopUp: {fileID: 1785987602}
   back: {fileID: 649917812}
+  next: {fileID: 262260463}
   interviewUI: {fileID: 460093228}
   speed: 0.5
   hit: 0
