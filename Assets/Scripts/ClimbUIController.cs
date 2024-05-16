@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
@@ -39,7 +40,7 @@ public class ClimbUIController : MonoBehaviour
                 completedPopUp.SetActive(true);
                 next.onClick.AddListener(InterviewManager.Instance.NextStage);
                 back.onClick.AddListener(GoToMainMenu);
-                InterviewManager.Instance.climbingGrade = Stopwatch.timeElapsed / goalTime;
+                InterviewManager.Instance.climbingGrade = Math.Min(1, Stopwatch.timeElapsed / goalTime);
                 return;
             }
         }

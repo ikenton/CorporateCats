@@ -1,11 +1,19 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+
 
 public class BowlBeingFilled : MonoBehaviour
 {
+    
+    
+    // public TextMeshProUGUI bakingText;
+    // public TextMeshProUGUINF highScore;
 
     [SerializeField] private AudioClip dropClip, finish;
     public GameObject bowl;
@@ -13,12 +21,16 @@ public class BowlBeingFilled : MonoBehaviour
     private List<GameObject> ingredientOrder = new List<GameObject>();
     public GameObject biscuit;
     public int x;
-     public Image[] orderDisplaySlots;
-     public Boolean correct = true;
-     public Vector3[] initialPositions;
-     private Vector3 bowlInitialPosition;
+    public int biscuitCount;
+    public Image[] orderDisplaySlots;
+    public Vector3[] initialPositions;
+    public TextMeshProUGUI numOfBiscuits;
+    public GameObject completedPopUp;
+    public Button back;
     void Start()
     {
+        x = 0;
+        completedPopUp.SetActive(false);
         ShuffleIngredients(ingredients);
         foreach (GameObject ingredient in ingredients)
         {
@@ -29,6 +41,7 @@ public class BowlBeingFilled : MonoBehaviour
         Debug.Log(x);
         SaveInitialPositions();
         biscuit.GetComponent<SpriteRenderer>().enabled = false;
+        biscuitCount = 0;
     }
 
     void ShuffleIngredients(GameObject[] ingredientsList)
@@ -65,6 +78,14 @@ public class BowlBeingFilled : MonoBehaviour
             initialPositions[i] = ingredients[i].transform.position;
         }
     }
+    void UpdateBiscuitCount()
+    {
+        if (numOfBiscuits != null)
+        {
+            biscuitCount++;
+            numOfBiscuits.text = biscuitCount.ToString();
+        }
+    }
 
    void ResetGame()
     {
@@ -75,6 +96,7 @@ public class BowlBeingFilled : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         x = 0;
+        biscuitCount = 0;
         ingredientOrder.Clear();
         ShuffleIngredients(ingredients);
         foreach (GameObject ingredient in ingredients)
@@ -110,6 +132,7 @@ public class BowlBeingFilled : MonoBehaviour
                 bowlTransform.localScale = new Vector3(9f, 9f, 1f);
                 biscuit.GetComponent<SpriteRenderer>().enabled = true;
                 AudioSource.PlayClipAtPoint(finish, transform.position);
+                UpdateBiscuitCount();
                 ResetGame();
             }
         }
@@ -117,6 +140,16 @@ public class BowlBeingFilled : MonoBehaviour
         {
             // game over!
             Debug.Log("You lose!");
+            completedPopUp.SetActive(true);
+            back.onClick.AddListener(GoToMainMenu); 
         }
     }
+
+    void GoToMainMenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Overworld");
+
+    }
 }
+
