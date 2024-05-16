@@ -129,6 +129,7 @@ public class BowlBeingFilled : MonoBehaviour
             {
                 Transform bowlTransform = this.gameObject.GetComponent<Transform>();
                 bowlTransform.localScale = new Vector3(12f, 12f, 1f);
+                bowl.GetComponent<SpriteRenderer>().enabled = false;
                 biscuit.GetComponent<SpriteRenderer>().enabled = true;
                 AudioSource.PlayClipAtPoint(finish, transform.position);
                 UpdateBiscuitCount();
