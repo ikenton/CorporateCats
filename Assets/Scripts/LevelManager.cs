@@ -22,7 +22,7 @@ public class LevelManager : MonoBehaviour
     public int CalculateClimbLvl()
     {
 
-        return Mathf.RoundToInt(climbController.score.GetComponent<Stopwatch>().timeElapsed) / 10;   // 1 level per 10 seconds survived? we'll figure it out
+        return Mathf.RoundToInt(Stopwatch.timeElapsed) / 10;   // 1 level per 10 seconds survived? we'll figure it out
 
     }
 
