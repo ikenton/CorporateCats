@@ -1186,7 +1186,7 @@ MonoBehaviour:
   goalTime: 20
   lives: 3
   isAutoplay: 0
-  initialPlayerLevel: 1
+  initialPlayerLevel: 15
   autoplaySkillLevel: 20
   jumpTimer: 0
   fastFallStartTime: 0.4

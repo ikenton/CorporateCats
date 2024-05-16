@@ -50,7 +50,8 @@ public class MySlider : MonoBehaviour
         UpdateMiceCountText("Mice Killed: ");
         ChangeDifficulty();
         completedPopUp.SetActive(false);
-        // initialPlayerLevel = PlayerPrefs.GetInt("pouncing_skill", 1);
+        initialPlayerLevel = PlayerPrefs.GetInt("pouncing_skill", 1);
+
         isAutoplay = InterviewManager.Instance.isAutoplay;
         interviewUI.SetActive(isAutoplay);
     }

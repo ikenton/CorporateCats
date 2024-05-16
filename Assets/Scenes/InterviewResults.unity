@@ -3197,7 +3197,7 @@ VideoPlayer:
   m_TimeReference: 0
   m_TargetMaterialRenderer: {fileID: 0}
   m_TargetMaterialProperty: <noninit>
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_AspectRatio: 3
   m_DataSource: 0
   m_TimeUpdateMode: 1
@@ -3399,7 +3399,7 @@ VideoPlayer:
   m_TimeReference: 0
   m_TargetMaterialRenderer: {fileID: 0}
   m_TargetMaterialProperty: <noninit>
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_AspectRatio: 3
   m_DataSource: 0
   m_TimeUpdateMode: 1
@@ -3626,11 +3626,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f013447acf616bc4e9b400966b06a907, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ui: {fileID: 1031340074}
   pouncingText: {fileID: 295304428}
   climbingText: {fileID: 294063641}
   bakingText: {fileID: 1764365468}
   overallText: {fileID: 2084150708}
   resultsButton: {fileID: 1303091360}
+  fail: {fileID: 628597690}
+  pass: {fileID: 1003166823}
 --- !u!1 &1303091358
 GameObject:
   m_ObjectHideFlags: 0
