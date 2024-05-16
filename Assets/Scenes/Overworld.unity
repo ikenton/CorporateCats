@@ -367,6 +367,51 @@ MonoBehaviour:
   m_BoundingShape2D: {fileID: 1455083650}
   m_Damping: 0.5
   m_MaxWindowSize: -1
+--- !u!1 &123315463
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 123315465}
+  - component: {fileID: 123315464}
+  m_Layer: 0
+  m_Name: InterviewManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &123315464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 123315463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8de5a88fd9f269f409f6753c13970887, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAutoplay: 0
+--- !u!4 &123315465
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 123315463}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.0257945, y: -1.3678757, z: -1.0539992}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &153595240
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -375,6 +420,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1388095613337496616, guid: f985a3ed0dd0e584e8e97bcd667ee7df, type: 3}
+      propertyPath: m_Color.b
+      value: 0.8113208
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388095613337496616, guid: f985a3ed0dd0e584e8e97bcd667ee7df, type: 3}
+      propertyPath: m_Color.g
+      value: 0.75868845
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388095613337496616, guid: f985a3ed0dd0e584e8e97bcd667ee7df, type: 3}
+      propertyPath: m_Color.r
+      value: 0.5556782
+      objectReference: {fileID: 0}
     - target: {fileID: 1811455674529918395, guid: f985a3ed0dd0e584e8e97bcd667ee7df, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.75
@@ -917,12 +974,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2183897497392934964, guid: f985a3ed0dd0e584e8e97bcd667ee7df, type: 3}
       propertyPath: sceneName
-      value: ClimbEvent
+      value: QuickTimeEvent
       objectReference: {fileID: 0}
     - target: {fileID: 2183897497392934964, guid: f985a3ed0dd0e584e8e97bcd667ee7df, type: 3}
       propertyPath: description
       value: 
       objectReference: {fileID: 1695751688}
+    - target: {fileID: 2183897497392934964, guid: f985a3ed0dd0e584e8e97bcd667ee7df, type: 3}
+      propertyPath: isInterview
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2238698611487383759, guid: f985a3ed0dd0e584e8e97bcd667ee7df, type: 3}
       propertyPath: m_Text
       value: Put your skills to the test
@@ -1359,6 +1420,7 @@ GameObject:
   - component: {fileID: 928184215}
   - component: {fileID: 928184214}
   - component: {fileID: 928184213}
+  - component: {fileID: 928184218}
   m_Layer: 5
   m_Name: Pause Menu
   m_TagString: Untagged
@@ -1385,6 +1447,7 @@ MonoBehaviour:
   howToInstructions: {fileID: 1821748949}
   back: {fileID: 1903962582}
   popUp: {fileID: 650380039}
+  levelManager: {fileID: 928184218}
 --- !u!114 &928184214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1468,6 +1531,20 @@ RectTransform:
   m_AnchoredPosition: {x: 461, y: 209.8}
   m_SizeDelta: {x: 922, y: 419.6}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &928184218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 928184212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3f329d815d07634dad5380d004dde06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pouncingGame: {fileID: 0}
+  climbController: {fileID: 0}
 --- !u!1 &935190135
 GameObject:
   m_ObjectHideFlags: 0
@@ -3619,7 +3696,7 @@ Transform:
   m_GameObject: {fileID: 2081311792}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.31304836, y: -1.13535, z: -11}
+  m_LocalPosition: {x: -1.2643461, y: -1.1310799, z: -11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3667,6 +3744,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1388095613337496616, guid: f985a3ed0dd0e584e8e97bcd667ee7df, type: 3}
+      propertyPath: m_Color.b
+      value: 0.4490565
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388095613337496616, guid: f985a3ed0dd0e584e8e97bcd667ee7df, type: 3}
+      propertyPath: m_Color.g
+      value: 0.4490565
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388095613337496616, guid: f985a3ed0dd0e584e8e97bcd667ee7df, type: 3}
+      propertyPath: m_Color.r
+      value: 0.4490565
+      objectReference: {fileID: 0}
     - target: {fileID: 1811455674529918395, guid: f985a3ed0dd0e584e8e97bcd667ee7df, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.5625
@@ -3740,6 +3829,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1388095613337496616, guid: f985a3ed0dd0e584e8e97bcd667ee7df, type: 3}
+      propertyPath: m_Color.b
+      value: 0.5943396
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388095613337496616, guid: f985a3ed0dd0e584e8e97bcd667ee7df, type: 3}
+      propertyPath: m_Color.g
+      value: 0.8008384
+      objectReference: {fileID: 0}
+    - target: {fileID: 1388095613337496616, guid: f985a3ed0dd0e584e8e97bcd667ee7df, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1811455674529918395, guid: f985a3ed0dd0e584e8e97bcd667ee7df, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.84
@@ -3822,3 +3923,4 @@ SceneRoots:
   - {fileID: 1865308000}
   - {fileID: 411358278}
   - {fileID: 1384835527}
+  - {fileID: 123315465}
