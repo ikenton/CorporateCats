@@ -10,6 +10,7 @@ public class LevelManager : MonoBehaviour
    
     public MySlider pouncingGame;
     public ClimbUIController climbController;
+    public BowlBeingFilled bakingGame; //need to get the score from baking script.
     private int currentLevel;
     private int levelsGained;
 
@@ -24,6 +25,10 @@ public class LevelManager : MonoBehaviour
 
         return Mathf.RoundToInt(Stopwatch.timeElapsed) / 10;   // 1 level per 10 seconds survived? we'll figure it out
 
+    }
+    public int CalculateBakingLvl()
+    {
+        return 0; //replace 0 with the number of biscuits made.
     }
 
     public void UpdateLevels()
@@ -44,7 +49,12 @@ public class LevelManager : MonoBehaviour
 
         }
 
-
+        if(bakingGame != null)
+        {
+            currentLevel = PlayerPrefs.GetInt("baking_skill", 1);
+            levelsGained = CalculateClimbLvl();
+            PlayerPrefs.SetInt("baking_skill", currentLevel+levelsGained);
+        }
         SceneManager.LoadScene("Overworld");
 
     }
