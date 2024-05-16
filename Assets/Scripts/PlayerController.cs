@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : PhysicsObject
-
-{    // Start is called before the first frame update
+{   // Start is called before the first frame update
     public Animator animator;
     void Start()
     {

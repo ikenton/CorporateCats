@@ -28,6 +28,7 @@ public class CatJump : MonoBehaviour
     void Start()
     {
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<ClimbUIController>(); 
+        initialPlayerLevel = PlayerPrefs.GetInt("climbing_skill", 1);
         if (InterviewManager.Instance != null)
         {
             isAutoplay = InterviewManager.Instance.isAutoplay;
@@ -44,7 +45,7 @@ public class CatJump : MonoBehaviour
     void Update()
     {
         // cat.velocity = Vector2.right * travelVelocity;  
-        if ((Input.GetKeyDown(KeyCode.Space) == true || Input.GetKeyDown(KeyCode.UpArrow)) && isJumping == false){
+        if ((Input.GetKeyDown(KeyCode.Space) == true || Input.GetKeyDown(KeyCode.UpArrow)) && isJumping == false && !isAutoplay){
             Jump();
         }
 

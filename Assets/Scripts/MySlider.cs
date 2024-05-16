@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
@@ -49,7 +50,8 @@ public class MySlider : MonoBehaviour
         UpdateMiceCountText("Mice Killed: ");
         ChangeDifficulty();
         completedPopUp.SetActive(false);
-        // initialPlayerLevel = PlayerPrefs.GetInt("pouncing_skill", 1);
+        initialPlayerLevel = PlayerPrefs.GetInt("pouncing_skill", 1);
+
         isAutoplay = InterviewManager.Instance.isAutoplay;
         interviewUI.SetActive(isAutoplay);
     }
@@ -220,7 +222,7 @@ public class MySlider : MonoBehaviour
             highScore.text = "Mice slain: " + miceCount;
             next.gameObject.SetActive(true);
             // calculate grade
-            InterviewManager.Instance.pouncingGrade = miceCount / interviewUI.GetComponent<Timer>().goal;
+            InterviewManager.Instance.pouncingGrade = Math.Min(1, miceCount / interviewUI.GetComponent<Timer>().goal);
             next.onClick.AddListener(InterviewManager.Instance.NextStage);
         }
         Time.timeScale = 0f;
