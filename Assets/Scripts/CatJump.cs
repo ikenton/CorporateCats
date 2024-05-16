@@ -9,14 +9,17 @@ public class CatJump : MonoBehaviour
     public Rigidbody2D cat;
     public ClimbUIController logic;
 
+    public bool isAutoplay = false;
+
     public float jumpTimer = 0.0f;
-    public float fastFallStartTime = 0.5f;
+    public float fastFallStartTime = 0.50f;
     
     public bool isJumping = false;
     // Start is called before the first frame update
     void Start()
     {
         logic = GameObject.FindGameObjectWithTag("Logic").GetComponent<ClimbUIController>(); 
+        isAutoplay = InterviewManager.Instance.isAutoplay;
     }
 
     // Update is called once per frame
@@ -32,20 +35,23 @@ public class CatJump : MonoBehaviour
         {
                cat.velocity = Vector2.down * jumpVelocity;
         }
-        if (isJumping)
+        if (isAutoplay)
         {
-            if (jumpTimer > fastFallStartTime)
+            if (isJumping)
             {
-                cat.velocity = Vector2.down * jumpVelocity;
+                if (jumpTimer > fastFallStartTime)
+                {
+                    cat.velocity = Vector2.down * jumpVelocity;
+                }
+                else
+                {
+                    jumpTimer += Time.deltaTime;
+                }
             }
-            else
+            else if (!isJumping)
             {
-                jumpTimer += Time.deltaTime;
+                jumpTimer = 0.0f;
             }
-        }
-        else if (!isJumping)
-        {
-            jumpTimer = 0.0f;
         }
     }
 
@@ -68,6 +74,10 @@ public class CatJump : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!isAutoplay)
+        {
+            return;
+        }
         if (collision.gameObject.CompareTag("Enemy"))
         {
             if (!isJumping)

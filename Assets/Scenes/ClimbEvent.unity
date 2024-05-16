@@ -1179,6 +1179,9 @@ MonoBehaviour:
   jumpVelocity: 13
   cat: {fileID: 586433970}
   logic: {fileID: 954830433}
+  isAutoplay: 1
+  jumpTimer: 0
+  fastFallStartTime: 0.4
   isJumping: 0
 --- !u!95 &586433975
 Animator:
