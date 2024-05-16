@@ -1528,8 +1528,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouse: {fileID: 7367071793290135369, guid: cb4b9c5ff1c6ecd4295f86a702281d73, type: 3}
-  minWaitTime: 0.5
-  maxWaitTime: 1.5
+  minWaitTime: 0.75
+  maxWaitTime: 1.25
 --- !u!4 &723785231
 Transform:
   m_ObjectHideFlags: 0
@@ -2099,7 +2099,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89265c26af42b3c4d828121e0521e912, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: {fileID: 1511280603}
   highScore: {fileID: 976378286}
   completedPopUp: {fileID: 692922134}
   back: {fileID: 831076443}
@@ -2721,7 +2720,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 492299e614235fd4191a4a0885662dcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeElapsed: 0
   timeText: {fileID: 536598862}
 --- !u!1 &1519004387
 GameObject:
@@ -2945,7 +2943,7 @@ Transform:
   m_GameObject: {fileID: 1552667169}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.17071687, w: 0.98532015}
-  m_LocalPosition: {x: 0.59187937, y: -2.1881542, z: 1.0453484}
+  m_LocalPosition: {x: -1.33, y: 3.18, z: 1.0453484}
   m_LocalScale: {x: 23.532885, y: 23.532885, z: 26.297615}
   m_ConstrainProportionsScale: 0
   m_Children: []
