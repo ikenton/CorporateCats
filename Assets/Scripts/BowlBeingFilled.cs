@@ -140,6 +140,8 @@ public class BowlBeingFilled : MonoBehaviour
             Debug.Log("You lose!");
             completedPopUp.SetActive(true);
             back.onClick.AddListener(GoToMainMenu);
+            currentPlayerLevel = PlayerPrefs.GetInt("baking_skill", 1);
+            levelsGained = biscuitCount / 2;
             PlayerPrefs.SetInt("pouncing_skill", currentPlayerLevel + levelsGained);
             highScore.text = "High Score: " + biscuitCount + "\nPouncing level: " + currentPlayerLevel + " -> " + (currentPlayerLevel + levelsGained);
         }
