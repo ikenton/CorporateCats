@@ -35,11 +35,11 @@ public class BiscuitSlider : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        UpdateBiscuitCountText("Biscuits Baked: ");
-        ManageBar();
-    }
+    // void Update()
+    // {
+    //     UpdateBiscuitCountText("Biscuits Baked: ");
+    //     ManageBar();
+    // }
 
 
     // public void ChangeDifficulty()
@@ -58,10 +58,10 @@ public class BiscuitSlider : MonoBehaviour
         numOfBiscuits.text = "Biscuits baked: " + biscuitCount;
     }
 
-    void ManageBar()
-    {
-        CompletedPounce();
-    }
+    // void ManageBar()
+    // {
+    //     CompletedPounce();
+    // }
 
     IEnumerator DisplaybakingTextCor(string burnt)
     {
@@ -76,36 +76,36 @@ public class BiscuitSlider : MonoBehaviour
     }
 
 
-    public void DisplaybakingText(string burnt)
-    {
-        bakingText.text = burnt;
-        StartCoroutine(DisplaybakingTextCor(burnt));
-        //bakingText.gameObject.SetActive(true);
-    }
-    /*void LevelUp(int  level)
-    {
-        biscuitCount = 0;
-        Time.timeScale = 0f; //pauses the game
-        bakingText.gameObject.SetActive(false);
-        levelPopUp.SetActive(true);
-        levelNum++;
-        levelUpTextNum.text = "Level " + levelNum;
-        back.onClick.AddListener(GoToMainMenu); //goes back to the selection area
-        playAgain.onClick.AddListener(Reload);
-    }*/
+    // public void DisplaybakingText(string burnt)
+    // {
+    //     bakingText.text = burnt;
+    //     StartCoroutine(DisplaybakingTextCor(burnt));
+    //     //bakingText.gameObject.SetActive(true);
+    // }
+    // /*void LevelUp(int  level)
+    // {
+    //     biscuitCount = 0;
+    //     Time.timeScale = 0f; //pauses the game
+    //     bakingText.gameObject.SetActive(false);
+    //     levelPopUp.SetActive(true);
+    //     levelNum++;
+    //     levelUpTextNum.text = "Level " + levelNum;
+    //     back.onClick.AddListener(GoToMainMenu); //goes back to the selection area
+    //     playAgain.onClick.AddListener(Reload);
+    // }*/
 
-     public void CompletedPounce()
-    {
-        // calculate levels
-        int levelsGained = biscuitCount;   // temp, will be changed to a more complex formula later... maybe
-        int currentLevel = PlayerPrefs.GetInt("baking_skill", 1);
-        PlayerPrefs.SetInt("baking_skill", currentLevel + levelsGained);  // might be able to be moved to a more generic script
+    //  public void CompletedPounce()
+    // {
+    //     // calculate levels
+    //     int levelsGained = biscuitCount;   // temp, will be changed to a more complex formula later... maybe
+    //     int currentLevel = PlayerPrefs.GetInt("baking_skill", 1);
+    //     PlayerPrefs.SetInt("baking_skill", currentLevel + levelsGained);  // might be able to be moved to a more generic script
 
-        highScore.text = "High Score: " + biscuitCount + "\nBaking level: " + currentLevel + " -> " + (currentLevel + levelsGained);
-        Time.timeScale = 0f;
-        completedPopUp.SetActive(true);    
-        back.onClick.AddListener(GoToMainMenu); //goes back to the selection area
-    }
+    //     highScore.text = "High Score: " + biscuitCount + "\nBaking level: " + currentLevel + " -> " + (currentLevel + levelsGained);
+    //     Time.timeScale = 0f;
+    //     completedPopUp.SetActive(true);    
+    //     back.onClick.AddListener(GoToMainMenu); //goes back to the selection area
+    // }
    
     void GoToMainMenu()
     {
