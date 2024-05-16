@@ -1,9 +1,12 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+
 
 public class BowlBeingFilled : MonoBehaviour
 {
@@ -20,13 +23,13 @@ public class BowlBeingFilled : MonoBehaviour
     public int x;
     public int biscuitCount;
     public Image[] orderDisplaySlots;
-    public Boolean correct = true;
     public Vector3[] initialPositions;
-    private Vector3 bowlInitialPosition;
     public TextMeshProUGUI numOfBiscuits;
     public GameObject completedPopUp;
+    public Button back;
     void Start()
     {
+        x = 0;
         completedPopUp.SetActive(false);
         ShuffleIngredients(ingredients);
         foreach (GameObject ingredient in ingredients)
@@ -138,6 +141,15 @@ public class BowlBeingFilled : MonoBehaviour
             // game over!
             Debug.Log("You lose!");
             completedPopUp.SetActive(true);
+            back.onClick.AddListener(GoToMainMenu); 
         }
     }
+
+    void GoToMainMenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Overworld");
+
+    }
 }
+
