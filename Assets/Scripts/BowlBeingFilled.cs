@@ -117,7 +117,6 @@ public class BowlBeingFilled : MonoBehaviour
         else
         {
             // game over!
-            levelsGained = (int)Math.Floor((double)biscuitCount / 2);
             Debug.Log("You lose!");
         }
     }
