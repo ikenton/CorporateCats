@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class BowlBeingFilled : MonoBehaviour
@@ -22,7 +24,8 @@ public class BowlBeingFilled : MonoBehaviour
     public Button back;
     public int currentPlayerLevel;
     public int levelsGained;
-    void Start()
+    public int biscuitCount;
+    public void Start()
     {
         x = 0;
         currentPlayerLevel = PlayerPrefs.GetInt("baking_skill", 1);
@@ -122,6 +125,7 @@ public class BowlBeingFilled : MonoBehaviour
 
             if (x==3)
             {
+                UpdateBiscuitCount();
                 Transform bowlTransform = this.gameObject.GetComponent<Transform>();
                 bowlTransform.localScale = new Vector3(12f, 12f, 1f);
                 bowl.GetComponent<SpriteRenderer>().enabled = false;
@@ -140,5 +144,12 @@ public class BowlBeingFilled : MonoBehaviour
             PlayerPrefs.SetInt("pouncing_skill", currentPlayerLevel + levelsGained);
             highScore.text = "High Score: " + biscuitCount + "\nPouncing level: " + currentPlayerLevel + " -> " + (currentPlayerLevel + levelsGained);
         }
+        
+    }
+    void GoToMainMenu()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Overworld");
+
     }
 }
