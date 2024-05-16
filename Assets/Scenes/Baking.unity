@@ -341,8 +341,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4281874488
+  m_fontColor: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -854,6 +854,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b9adfed6a7a7064a896ff4628e13e15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  highScore: {fileID: 1183218155}
   dropClip: {fileID: 8300000, guid: 33932fc1e156ae14aba204770d68af20, type: 3}
   finish: {fileID: 8300000, guid: 7fca32aa2f1b7dd44946bd4b3e521239, type: 3}
   bowl: {fileID: 446289219}
@@ -872,6 +873,8 @@ MonoBehaviour:
   numOfBiscuits: {fileID: 726173424}
   completedPopUp: {fileID: 409479733}
   back: {fileID: 346172284}
+  currentPlayerLevel: 0
+  levelsGained: 0
 --- !u!1 &490484982
 GameObject:
   m_ObjectHideFlags: 0
@@ -1371,7 +1374,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1380,8 +1383,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4281874488
+  m_fontColor: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2227,6 +2230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b9adfed6a7a7064a896ff4628e13e15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  highScore: {fileID: 0}
   dropClip: {fileID: 0}
   finish: {fileID: 8300000, guid: 33932fc1e156ae14aba204770d68af20, type: 3}
   bowl: {fileID: 446289219}
@@ -2245,6 +2249,8 @@ MonoBehaviour:
   numOfBiscuits: {fileID: 0}
   completedPopUp: {fileID: 0}
   back: {fileID: 0}
+  currentPlayerLevel: 0
+  levelsGained: 0
 --- !u!114 &1811981296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2274,8 +2280,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4281874488
+  m_fontColor: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
