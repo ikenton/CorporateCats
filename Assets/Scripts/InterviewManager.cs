@@ -8,12 +8,13 @@ public class InterviewManager : MonoBehaviour
 {
     public static InterviewManager Instance;
     public bool isAutoplay;
-    public string[] levels = new string[]
-    {
-        "QuickTimeEvent",
-        "ClimbingEvent",
-        "BakingEvent",
-    };
+    public string[] levels = new string[] { };
+
+    // The plauer's performance in each skill
+    // Will be calculated into a final grade that determines passing or failing
+    public float pouncingGrade = 0.00f;
+    public float climbingGrade = 0.00f;
+    public float bakingGrade = 0.00f;
 
     private void Awake()
     {
@@ -41,6 +42,7 @@ public class InterviewManager : MonoBehaviour
 
     public void NextStage()
     {
+        Time.timeScale = 1f;
         for (int i = 0; i < levels.Length; i++)
         {
             if (SceneManager.GetActiveScene().name == levels[i])

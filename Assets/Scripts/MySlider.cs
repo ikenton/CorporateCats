@@ -219,6 +219,7 @@ public class MySlider : MonoBehaviour
         {
             highScore.text = "Mice slain: " + miceCount;
             next.gameObject.SetActive(true);
+            next.onClick.AddListener(InterviewManager.Instance.NextStage);
         }
         Time.timeScale = 0f;
         hitText.gameObject.SetActive(false);
