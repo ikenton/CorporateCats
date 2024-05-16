@@ -1,17 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Security.Cryptography;
-using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
 
 public class BowlBeingFilled : MonoBehaviour
 {
-     public TextMeshProUGUI highScore;
 
     [SerializeField] private AudioClip dropClip, finish;
     public GameObject bowl;
@@ -19,19 +13,12 @@ public class BowlBeingFilled : MonoBehaviour
     private List<GameObject> ingredientOrder = new List<GameObject>();
     public GameObject biscuit;
     public int x;
-    public int biscuitCount;
     public Image[] orderDisplaySlots;
+    public Boolean correct = true;
     public Vector3[] initialPositions;
-    public TextMeshProUGUI numOfBiscuits;
-    public GameObject completedPopUp;
-    public Button back;
-    public int currentPlayerLevel;
-    public int levelsGained;
+    private Vector3 bowlInitialPosition;
     void Start()
     {
-        x = 0;
-        currentPlayerLevel = PlayerPrefs.GetInt("baking_skill", 1);
-        completedPopUp.SetActive(false);
         ShuffleIngredients(ingredients);
         foreach (GameObject ingredient in ingredients)
         {
@@ -42,8 +29,6 @@ public class BowlBeingFilled : MonoBehaviour
         Debug.Log(x);
         SaveInitialPositions();
         biscuit.GetComponent<SpriteRenderer>().enabled = false;
-        biscuitCount = 0;
-        levelsGained = 0; 
     }
 
     void ShuffleIngredients(GameObject[] ingredientsList)
@@ -79,12 +64,6 @@ public class BowlBeingFilled : MonoBehaviour
         {
             initialPositions[i] = ingredients[i].transform.position;
         }
-    }
-    void UpdateBiscuitCount()
-    {
-        biscuitCount++;
-        numOfBiscuits.text = biscuitCount.ToString();
-
     }
 
    void ResetGame()
@@ -132,7 +111,6 @@ public class BowlBeingFilled : MonoBehaviour
                 bowl.GetComponent<SpriteRenderer>().enabled = false;
                 biscuit.GetComponent<SpriteRenderer>().enabled = true;
                 AudioSource.PlayClipAtPoint(finish, transform.position);
-                UpdateBiscuitCount();
                 ResetGame();
             }
         }
@@ -141,18 +119,6 @@ public class BowlBeingFilled : MonoBehaviour
             // game over!
             levelsGained = (int)Math.Floor((double)biscuitCount / 2);
             Debug.Log("You lose!");
-            completedPopUp.SetActive(true);
-            back.onClick.AddListener(GoToMainMenu);
-            PlayerPrefs.SetInt("pouncing_skill", currentPlayerLevel + levelsGained);
-            highScore.text = "High Score: " + biscuitCount + "\nPouncing level: " + currentPlayerLevel + " -> " + (currentPlayerLevel + levelsGained);
         }
     }
-
-    void GoToMainMenu()
-    {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene("Overworld");
-
-    }
 }
-
